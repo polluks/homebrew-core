@@ -2,8 +2,8 @@ class Openj9 < Formula
   desc "High performance, scalable, Java virtual machine"
   homepage "https://www.eclipse.org/openj9/"
   url "https://github.com/eclipse-openj9/openj9.git",
-      tag:      "openj9-0.30.1",
-      revision: "9dccbe076db9055f4020bae78513f52c02572ba4"
+      tag:      "openj9-0.32.0",
+      revision: "9a84ec34ed321967cdbe67b29ddcd732b591d051"
   license any_of: [
     "EPL-2.0",
     "Apache-2.0",
@@ -17,9 +17,9 @@ class Openj9 < Formula
   end
 
   bottle do
-    sha256 cellar: :any, monterey: "fe62806524547c01522c560a6bea3d9b70bda08bf07269b27dd06bf1faab3b5a"
-    sha256 cellar: :any, big_sur:  "9796383fcb07f9f69ac914405dea768c79295f12e401b730fef0b1cb02589937"
-    sha256 cellar: :any, catalina: "055e4cfcba761ee8f208296adbcf428d37787ddd95235cf10e263852c73ac2fc"
+    sha256 cellar: :any, monterey: "bfb85bf3b8fb2467c09737099c9c6d7bad7ac7f2403a788fe7c0378b6411cab4"
+    sha256 cellar: :any, big_sur:  "1758d93cfaef40edff506f410a86da434085c4a9c6647fc40084150387bb7be6"
+    sha256 cellar: :any, catalina: "fefdcb19393018f7f9ecb749ecbf3681da8f8790eb3d774b767e53670a342292"
   end
 
   keg_only :shadowed_by_macos
@@ -72,14 +72,14 @@ class Openj9 < Formula
 
   resource "omr" do
     url "https://github.com/eclipse-openj9/openj9-omr.git",
-        tag:      "openj9-0.30.1",
-        revision: "56c3376ba057f905dc2ccd38fb4056d33f9e1f7c"
+        tag:      "openj9-0.32.0",
+        revision: "ab24b6666596140516d3f240486aa1c84a726775"
   end
 
   resource "openj9-openjdk-jdk" do
     url "https://github.com/ibmruntimes/openj9-openjdk-jdk17.git",
-        branch:   "v0.30.0-release",
-        revision: "64cd399ca2808c6c514e22a565c30f592d3f25c9"
+        branch:   "v0.32.0-release",
+        revision: "9a84ec34ed321967cdbe67b29ddcd732b591d051"
   end
 
   def install

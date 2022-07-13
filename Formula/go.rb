@@ -1,9 +1,9 @@
 class Go < Formula
   desc "Open source programming language to build simple/reliable/efficient software"
   homepage "https://go.dev/"
-  url "https://go.dev/dl/go1.18.1.src.tar.gz"
-  mirror "https://fossies.org/linux/misc/go1.18.1.src.tar.gz"
-  sha256 "efd43e0f1402e083b73a03d444b7b6576bb4c539ac46208b63a916b69aca4088"
+  url "https://go.dev/dl/go1.18.4.src.tar.gz"
+  mirror "https://fossies.org/linux/misc/go1.18.4.src.tar.gz"
+  sha256 "4525aa6b0e3cecb57845f4060a7075aafc9ab752bb7b6b4cf8a212d43078e1e4"
   license "BSD-3-Clause"
   head "https://go.googlesource.com/go.git", branch: "master"
 
@@ -13,39 +13,30 @@ class Go < Formula
   end
 
   bottle do
-    sha256 arm64_monterey: "1f43c3563aa7d0a124745b4873a3122565761400d6d9e363962a3dbddce980d3"
-    sha256 arm64_big_sur:  "87bbda21351bcc22076014a59c5ad5ea45468748170d5f268e2e4c90140bd7b7"
-    sha256 monterey:       "642ebd8d3e2d3ee1e959aa0af67cd597594498480a55557025f4b1d70d2e9057"
-    sha256 big_sur:        "7c10a52de6e68d572ecca1232dc8ca15c9ae0362fca909105326e32527d30199"
-    sha256 catalina:       "fb1371dd30097b6408a9cf37b26bdf714e449785803aadcdc40b88813e79c90a"
-    sha256 x86_64_linux:   "47b7a9af4e2d45035cf2de9d4a62b1ef04dbf3449ba08e3ef5b6b39be14855fa"
+    sha256 arm64_monterey: "a527399f8b02b99b4c8af775d527bbed0878d5f3759dddd7b9a3d2846a81d9dc"
+    sha256 arm64_big_sur:  "83553064d020b745936818a0ecbdc0fbf308ff6ac085469f0acf5bdcfd851dcc"
+    sha256 monterey:       "7eb0a6fddaaf099e7d4f278adfe77a6762b798ae597c8ad066e8c4e293652b7c"
+    sha256 big_sur:        "5c9fca7d8b2d853918d8f5c5767298a5f812aae76fb7ba7912d741770f41926b"
+    sha256 catalina:       "c3b03f84af6618b04fcd5987f5785913311af8d0d5a5f70cba804bf3c015fa50"
+    sha256 x86_64_linux:   "4d0d01878f8ba531180fd8653f08edeebd786fb0d9050bba50ff3d4aacf503bc"
   end
 
   # Don't update this unless this version cannot bootstrap the new version.
   resource "gobootstrap" do
-    on_macos do
-      if Hardware::CPU.arm?
-        url "https://storage.googleapis.com/golang/go1.16.darwin-arm64.tar.gz"
-        version "1.16"
-        sha256 "4dac57c00168d30bbd02d95131d5de9ca88e04f2c5a29a404576f30ae9b54810"
-      else
-        url "https://storage.googleapis.com/golang/go1.16.darwin-amd64.tar.gz"
-        version "1.16"
-        sha256 "6000a9522975d116bf76044967d7e69e04e982e9625330d9a539a8b45395f9a8"
-      end
-    end
+    checksums = {
+      "darwin-arm64" => "4dac57c00168d30bbd02d95131d5de9ca88e04f2c5a29a404576f30ae9b54810",
+      "darwin-amd64" => "6000a9522975d116bf76044967d7e69e04e982e9625330d9a539a8b45395f9a8",
+      "linux-arm64"  => "3770f7eb22d05e25fbee8fb53c2a4e897da043eb83c69b9a14f8d98562cd8098",
+      "linux-amd64"  => "013a489ebb3e24ef3d915abe5b94c3286c070dfe0818d5bca8108f1d6e8440d2",
+    }
 
-    on_linux do
-      if Hardware::CPU.arm?
-        url "https://storage.googleapis.com/golang/go1.16.linux-arm64.tar.gz"
-        version "1.16"
-        sha256 "3770f7eb22d05e25fbee8fb53c2a4e897da043eb83c69b9a14f8d98562cd8098"
-      else
-        url "https://storage.googleapis.com/golang/go1.16.linux-amd64.tar.gz"
-        version "1.16"
-        sha256 "013a489ebb3e24ef3d915abe5b94c3286c070dfe0818d5bca8108f1d6e8440d2"
-      end
-    end
+    arch = Hardware::CPU.intel? ? :amd64 : Hardware::CPU.arch
+    platform = "#{OS.kernel_name.downcase}-#{arch}"
+    boot_version = "1.16"
+
+    url "https://storage.googleapis.com/golang/go#{boot_version}.#{platform}.tar.gz"
+    version boot_version
+    sha256 checksums[platform]
   end
 
   def install

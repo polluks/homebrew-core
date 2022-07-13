@@ -1,17 +1,17 @@
 class Libre < Formula
   desc "Toolkit library for asynchronous network I/O with protocol stacks"
   homepage "https://github.com/baresip/re"
-  url "https://github.com/baresip/re/archive/refs/tags/v2.2.2.tar.gz"
-  sha256 "25d66108f827507d1a08dc15d4a2a6d994e0cc2368f2faa6778b3a48c0d15f2f"
+  url "https://github.com/baresip/re/archive/refs/tags/v2.5.0.tar.gz"
+  sha256 "937e4d9d94684159d264d8982bad599d594bef00d62170174dba3026fe2bcdcc"
   license "BSD-3-Clause"
 
   bottle do
-    sha256 cellar: :any,                 arm64_monterey: "5bc9f336f22aa81d3b732f0dc8dead3651d3dfae40480d551464f8ab6f19f120"
-    sha256 cellar: :any,                 arm64_big_sur:  "1a497b9c1d3f9308e4acfd44ea5c291178c9d8c2d3bf13d42f863645668aa788"
-    sha256 cellar: :any,                 monterey:       "8150099d5b7e255dbc738d52a0b208620b62564e5a99d8050c679ca1bad7623b"
-    sha256 cellar: :any,                 big_sur:        "3e9a01c65d13fc15caba8b35079f3be40db5393a5d38b1669d3dbc112a40d499"
-    sha256 cellar: :any,                 catalina:       "c96000ce4b17ed1a443ba5b65377fdadc74c5f62c7689c475f5eb397cae49929"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "69c917be149cf9df20db90b01b4d08a9fdb029829224421c20163b44e15a7f98"
+    sha256 cellar: :any,                 arm64_monterey: "45b366390f5f9ab4212cfb4e09eb1dda47e5a185a9d56396f7936bd36eb311c4"
+    sha256 cellar: :any,                 arm64_big_sur:  "7887639a9d19860ed5610d512d3412abd30f8f4b7bec56d0e5b4cac0389456a7"
+    sha256 cellar: :any,                 monterey:       "8b6f7250c6dbd43471961c8ab50874427e8b0dab8d062f6691b7767d21840d69"
+    sha256 cellar: :any,                 big_sur:        "cd322c026f20d3609b0fc56c2ab61d3edf20d48c171d57291ec1a62e6a475bd0"
+    sha256 cellar: :any,                 catalina:       "5bf146f16f0311e66b1c3ee7843349374305ac46beabebfe9ff9b0f6fe37ac47"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "02e8a406f27f397397f717cfcb2e2d7fbe3a4c3762dd0c2d761d76ba8738fea7"
   end
 
   depends_on "openssl@1.1"

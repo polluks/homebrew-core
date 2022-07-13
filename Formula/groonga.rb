@@ -1,8 +1,8 @@
 class Groonga < Formula
   desc "Fulltext search engine and column store"
   homepage "https://groonga.org/"
-  url "https://packages.groonga.org/source/groonga/groonga-12.0.2.tar.gz"
-  sha256 "7ef0bb0607c0a92f414e74359683315e0fc993736a09cbd2cf28b9d5a467405a"
+  url "https://packages.groonga.org/source/groonga/groonga-12.0.5.tar.gz"
+  sha256 "abf1bdbf4b7ae1700f7725ea8d8139844fadb473457d7d907a8ebe94fdd5e451"
   license "LGPL-2.1-or-later"
 
   livecheck do
@@ -11,12 +11,12 @@ class Groonga < Formula
   end
 
   bottle do
-    sha256 arm64_monterey: "6536f1ba81e6e1dcb4b43344f79c3cabc4b8ebdf48b4dc731a185c9061ab88ce"
-    sha256 arm64_big_sur:  "f59ad1c7dc5763562b19403d5fdd7f7396213864de17c486f136940e43b4ed2c"
-    sha256 monterey:       "7002a6b7ac366e881735df9800f039963862d105fa3a5d0a79032a2bdce0c983"
-    sha256 big_sur:        "a751b12703de23776250b2e0247d8b42e3b3f6035672e3c40b750e09774cfef0"
-    sha256 catalina:       "9379f8ec2f6eaabb1bd1a4a4870d1a7d0381bbcf9694d5e5218fa7b3438b0bc6"
-    sha256 x86_64_linux:   "f824f933618baff38c77df931f45aae9dab70de74c5fd61e40844ab881bf11fb"
+    sha256 arm64_monterey: "69c3156dd8ac65530a24209b1a6c5075da5966f0224dbf0fad60a26f927ff53a"
+    sha256 arm64_big_sur:  "3d6068d6652395fc0c704682cdb937ebe4c40a04e5fcd5d80846049a8ef0ebd6"
+    sha256 monterey:       "9495982a54ac203d8af6e8aa980f91410dce31706afd8dcb6b403602c342cfab"
+    sha256 big_sur:        "9375c0d5dbaa0bda0c2d0319313a0a13d5ebb044e10c4b98677af5c8f1cfc12e"
+    sha256 catalina:       "38a8a3d502d8163f50632346ea1ef13cdc8ca73646ef3544f4c19167b26fd559"
+    sha256 x86_64_linux:   "eb6001817f7ce66568faa473b58de6fcd91c5684e52dac2d7674d44a1f86b234"
   end
 
   head do
@@ -32,6 +32,8 @@ class Groonga < Formula
   depends_on "msgpack"
   depends_on "openssl@1.1"
   depends_on "pcre"
+
+  uses_from_macos "libxcrypt"
 
   on_linux do
     depends_on "glib"

@@ -1,19 +1,18 @@
 class Httpd < Formula
   desc "Apache HTTP server"
   homepage "https://httpd.apache.org/"
-  url "https://dlcdn.apache.org/httpd/httpd-2.4.53.tar.bz2"
-  mirror "https://downloads.apache.org/httpd/httpd-2.4.53.tar.bz2"
-  sha256 "d0bbd1121a57b5f2a6ff92d7b96f8050c5a45d3f14db118f64979d525858db63"
+  url "https://dlcdn.apache.org/httpd/httpd-2.4.54.tar.bz2"
+  mirror "https://downloads.apache.org/httpd/httpd-2.4.54.tar.bz2"
+  sha256 "eb397feeefccaf254f8d45de3768d9d68e8e73851c49afd5b7176d1ecf80c340"
   license "Apache-2.0"
-  revision 1
 
   bottle do
-    sha256 arm64_monterey: "e947b28cf796d63fe9c69fb27a890ab4068f915bd501fe1548cad816824fcf22"
-    sha256 arm64_big_sur:  "961849a0fe4b096b20dc377c05ede1ec6fd1280ea5a292458412c8e3c4f96329"
-    sha256 monterey:       "0bb83ee76dd0eab3f137cc00a843d4f090a30157f2c3450f59fd89c29ce01404"
-    sha256 big_sur:        "5a467d02122921004238cb8f4704b4531b4312b2bd39d9868015d57e2c959eb7"
-    sha256 catalina:       "37624b76eb3784f01feeadb59c14d945a582323fb3ea34643e20dd34a116d7a8"
-    sha256 x86_64_linux:   "0a0b20583b9799920560a4a34a68fe954f6fc88f14d7f6a78550b23b3923d763"
+    sha256 arm64_monterey: "629e972fa257879e1fa9c7ada3c77d074f695a4a17d703b6237b8ff08cef4ea5"
+    sha256 arm64_big_sur:  "b4748fdc7e244caf65717df8c5535b24706498c001196a6537de9b59fa7b22b4"
+    sha256 monterey:       "e9ba4b0fefee0bf7d55a7dcb760e7e7bc8e71ae6c1a2585b2cb0f6f7f49edd57"
+    sha256 big_sur:        "a32a8cfdd80df5063e814c8c5e29e6dfe5b25c48ef9a964c9bfd70041818144d"
+    sha256 catalina:       "68fb5c99b136738505c3c3068779884549cb3f385caa0e06da5bed181742f792"
+    sha256 x86_64_linux:   "ad7db5857b8620bc67314935fbc21969ef47907a4ce12b99250e28ed27bdc742"
   end
 
   depends_on "apr"
@@ -171,6 +170,9 @@ class Httpd < Formula
       sleep 3
 
       assert_match expected_output, shell_output("curl -s 127.0.0.1:#{port}")
+
+      # Check that `apxs` can find `apu-1-config`.
+      system bin/"apxs", "-q", "APU_CONFIG"
     ensure
       Process.kill("TERM", pid)
       Process.wait(pid)

@@ -1,23 +1,23 @@
 class Scw < Formula
   desc "Command-line Interface for Scaleway"
   homepage "https://github.com/scaleway/scaleway-cli"
-  url "https://github.com/scaleway/scaleway-cli/archive/v2.5.1.tar.gz"
-  sha256 "af926168122c192b10a19d701f2a03a41f14897b2a6c654499203edd2aafcafe"
+  url "https://github.com/scaleway/scaleway-cli/archive/v2.5.4.tar.gz"
+  sha256 "1d6f0f0b334ca676b764f91551bc9b9b22665c5f23e6adf43ae0e09d9adbb50c"
   license "Apache-2.0"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "f5e0ac68f17ccae80eaedb97c664036e83a3895de6c6270e170c7d3334ad99d5"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "ffdeaa85b9fcfaf5bcb6c64d396fc0d3f7ef7fd32c0022386f6cabf4c0e41288"
-    sha256 cellar: :any_skip_relocation, monterey:       "0987c424fd44bf9db4e4f1216afe91d5feada2163bd65326c8bd1cbdafa98e96"
-    sha256 cellar: :any_skip_relocation, big_sur:        "b899a77c674e34c350ca9f87c3afc8bd91b146eb5ddf9e99af27ae49e082d8c4"
-    sha256 cellar: :any_skip_relocation, catalina:       "36bfb953aff18e6fc48f2f43c00b805ee21339a04508b8829b9e5661afba6a46"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "d2417dd45ec659a6b2005e1bff6c6f85cf24d4c5ed1ca9e16d94d05d4e1b6df2"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "719e02be8a7450a9dbde4e65eb316daf2db6ca5e4982ddba0578e80a93ea3e71"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "7301e76d91b53ea9ea508ce00da4f801b510863a2b6dc0570a54e7bd9137b034"
+    sha256 cellar: :any_skip_relocation, monterey:       "223fef190924fabe2d50b4adb5aefd98f9ebf36b915c880b6c642a12b04ae264"
+    sha256 cellar: :any_skip_relocation, big_sur:        "584aa97b80769a97cbbeb12c6c586f945ff322a402c9add8b792b3094c6686c4"
+    sha256 cellar: :any_skip_relocation, catalina:       "801ce8652fd506e7f5ce28d3d097c0580f0b3b4991bcc047b7ed1a17bb41d5fb"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "970afc9e516bef403270cb18ac969f1a710a9925ba2c7d3dcb542189b2a39d8b"
   end
 
   depends_on "go" => :build
 
   def install
-    system "go", "build", *std_go_args, "./cmd/scw"
+    system "go", "build", *std_go_args(ldflags: "-X main.Version=#{version}"), "./cmd/scw"
 
     zsh_output = Utils.safe_popen_read({ "SHELL" => "zsh" }, bin/"scw", "autocomplete", "script")
     (zsh_completion/"_scw").write zsh_output

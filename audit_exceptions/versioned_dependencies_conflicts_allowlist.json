@@ -1,16 +1,25 @@
 [
-  "anjuta",
+  "apache-arrow-glib",
+  "aqbanking",
+  "anime-downloader",
+  "arxiv_latex_cleaner",
+  "aws-google-auth",
+  "chapel",
   "coin3d",
   "emscripten",
   "freedink",
-  "gjs",
   "hive",
+  "jupyterlab",
   "libgaiagraphics",
   "librasterlite",
   "mpv",
+  "openmodelica",
   "predictionio",
+  "pyqt",
   "pyside",
   "pyside@2",
+  "qca",
   "sqoop",
-  "watchman"
+  "swtpm",
+  "synergy-core"
 ]

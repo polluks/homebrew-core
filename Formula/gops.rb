@@ -1,18 +1,18 @@
 class Gops < Formula
   desc "Tool to list and diagnose Go processes currently running on your system"
   homepage "https://github.com/google/gops"
-  url "https://github.com/google/gops/archive/refs/tags/v0.3.22.tar.gz"
-  sha256 "a8092305465b28b0db83eb7087edca958de6522bc3ebb14656ecb8aef521e07b"
+  url "https://github.com/google/gops/archive/refs/tags/v0.3.25.tar.gz"
+  sha256 "48f6c37df596d4661e2594d6eadb358150e094140e752643cfb2819fa6597bcb"
   license "BSD-3-Clause"
   head "https://github.com/google/gops.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "5531dfba3e026925dd13fbcece02096a54e2ffb4179db48c0f5deb87d53923be"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "aa0e48e32124e96c5cd3a46d905a5f9009fe5ad7a2177c0ab82cd5c6f8b18927"
-    sha256 cellar: :any_skip_relocation, monterey:       "73a426fd2c973c1032b1da9e3492ccf04846be94af5eb471702e63addcd5b5ed"
-    sha256 cellar: :any_skip_relocation, big_sur:        "259cd5b92827f5b6ef3594a3beee292a5bc8c72bdba2d3c6fe3eb574205898a1"
-    sha256 cellar: :any_skip_relocation, catalina:       "b73deb2fd695acb47f4de3b159a648230f0dc5f6e5816a9c1b76faa4919ce8f8"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "82c7a434378ec9aad1f1c80c4cca5f98d9a357a969dadf0604ba85c285ad86e4"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "f3a667b5d5de1774d509cad3c9bc883f3cd47b74c20838d7fa34bc5cd1d72cda"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "8b7161a19fd9070a7a95beea0b9e2909629364247e155fd01c49ec22b37b8be1"
+    sha256 cellar: :any_skip_relocation, monterey:       "3f23a3dd055cbd629212197ae27645bac34248aa78be9f5f9d3f894d52fad3bb"
+    sha256 cellar: :any_skip_relocation, big_sur:        "d8a98dab812edaf828a700b96e984f1a8029f92038356c69b3891adde4f3eebb"
+    sha256 cellar: :any_skip_relocation, catalina:       "459c18679c4c53ccd7ad598308c2450e5038350770b0aa17e60c598024d20e37"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "9cf6488fcb2af2df43c6832b851e504960a8951ea46321b14ed1f2543b3fe6fa"
   end
 
   depends_on "go" => [:build, :test]

@@ -1,17 +1,18 @@
 class Gource < Formula
   desc "Version Control Visualization Tool"
   homepage "https://github.com/acaudwell/Gource"
-  url "https://github.com/acaudwell/Gource/releases/download/gource-0.52/gource-0.52.tar.gz"
-  sha256 "92e713291936cc4688b6d3d52868f4cca4263c2efec9b3848086e93cd9935e08"
+  url "https://github.com/acaudwell/Gource/releases/download/gource-0.53/gource-0.53.tar.gz"
+  sha256 "3d5f64c1c6812f644c320cbc9a9858df97bc6036fc1e5f603ca46b15b8dd7237"
   license "GPL-3.0-or-later"
+  revision 1
 
   bottle do
-    sha256 arm64_monterey: "1c73e63e38f78e848e9f3dbc4ee48c80eff0ca1c9c455bc871dbefa7ce9b05b1"
-    sha256 arm64_big_sur:  "5391072ce69057a19ba0270f3a174bbcf6ea3b87eb8a27f9c3338e9ed96c6b55"
-    sha256 monterey:       "e00886c4c8d3e3c024086da0811c629c4212a2bd28e3a43014a231a7d2980e68"
-    sha256 big_sur:        "0b3f32ffa9b3e5277fb860059121dd35e57cab39c859cec20ffa687648a4b8bd"
-    sha256 catalina:       "aca0d1acc8d793b57d1d9b1eaf0e23eff007168dfee847fd47ee5f6d741714a9"
-    sha256 x86_64_linux:   "48c6dbf70ab1ad72876b5806ca745e62762d12d3f894d7ecd9f8f22bbd43316e"
+    sha256 arm64_monterey: "efa5c9ef2d78af44422171df97d6cb513ce8f4dfd6d236aeb3089fa8029ae89c"
+    sha256 arm64_big_sur:  "6ab4d722ac6dc2984eada4861674da1e681efc254c68a3f2fd82128813d4143d"
+    sha256 monterey:       "df637390566e28ce1054679690e6ee027a830d560b08fcceae6195a8a7acfb94"
+    sha256 big_sur:        "26927a451639add4b2b7617af818d8c045ccb619e0c8e04905b8be08857a754d"
+    sha256 catalina:       "a7ef7bd6622ed0a142850b90406f94d08c5c39c58b4fb2d87c0d2f60423158fc"
+    sha256 x86_64_linux:   "2f151752f275c4431bb0719f92697a821427c5e666856fc18c5048567f8bab16"
   end
 
   head do

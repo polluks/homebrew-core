@@ -4,7 +4,7 @@ class Postgis < Formula
   url "https://download.osgeo.org/postgis/source/postgis-3.2.1.tar.gz"
   sha256 "fbab68dde6ca3934b24ba08c8ab0cff2594f57f93deab41a15c82ae1bb69893e"
   license "GPL-2.0-or-later"
-  revision 2
+  revision 4
 
   livecheck do
     url "https://download.osgeo.org/postgis/source/"
@@ -12,12 +12,12 @@ class Postgis < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_monterey: "e7627e1f7baa90a1c5cc7bcde2c2424a8da7d7312aae04008729a1f2c008ca48"
-    sha256 cellar: :any,                 arm64_big_sur:  "fc21222c0bf6f9d5d76b0fa616a4d0379d3e50ee8d268c23edce8436ced26b5d"
-    sha256 cellar: :any,                 monterey:       "85f53e74bac43bc11c4f3e47954de593355d1560a7f097e542dbd58f856975d7"
-    sha256 cellar: :any,                 big_sur:        "27c62120de8296b5f4197c98794a02256f4880cf2cfbea22d6fa7a44b71128b5"
-    sha256 cellar: :any,                 catalina:       "7b31458c60262f49204381b76e981caf647ce63936f47ae28b93301aabc1fcb7"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "361feda791c694c7ae40b78c73b4cbff171ee8e858953b303dc9cb20268740ad"
+    sha256 cellar: :any,                 arm64_monterey: "b4d02adb46f275667aee3742ccccb6fdac81015e0a67a4292fb4ed6e49b8cba5"
+    sha256 cellar: :any,                 arm64_big_sur:  "fe819e3bcfb07dd724b822024e19fafa34f20674d1f65485cef502d7c8483033"
+    sha256 cellar: :any,                 monterey:       "afb961e1a4a97069b152c114de82f9c64170a993e63e5118b25849ef2bb4284f"
+    sha256 cellar: :any,                 big_sur:        "156dc79e006a2746627a69b9c005fa97301b8a35c27e22d20ce92b0873e8d1e7"
+    sha256 cellar: :any,                 catalina:       "557444ec064e2471cc4508ea6f5c3550a321e12fbbc508bc654456557e19bebe"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "32378b22ed5304f279eba0d8f5f4aadf3d4b1ef6883690117bea5a7ac5d4b1ba"
   end
 
   head do

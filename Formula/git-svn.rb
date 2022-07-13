@@ -1,8 +1,8 @@
 class GitSvn < Formula
   desc "Bidirectional operation between a Subversion repository and Git"
   homepage "https://git-scm.com"
-  url "https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.35.3.tar.xz"
-  sha256 "15e9db4f9bf2ed9fff30cb62a00c5c7c0901015f5ab048cdb4e8b04ddee00fa2"
+  url "https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.37.0.tar.xz"
+  sha256 "9f7fa1711bd00c4ec3dde2fe44407dc13f12e4772b5e3c72a58db4c07495411f"
   license "GPL-2.0-only"
   head "https://github.com/git/git.git", branch: "master"
 
@@ -11,12 +11,12 @@ class GitSvn < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "12630021ae0126f71d7de74d95312545f975ae6fd2723be229c23453569d503c"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "c0b8b6e0d837541d55f62ee08ea27416653a695516438da11ffc7ea25cb70af7"
-    sha256 cellar: :any_skip_relocation, monterey:       "12630021ae0126f71d7de74d95312545f975ae6fd2723be229c23453569d503c"
-    sha256 cellar: :any_skip_relocation, big_sur:        "c0b8b6e0d837541d55f62ee08ea27416653a695516438da11ffc7ea25cb70af7"
-    sha256 cellar: :any_skip_relocation, catalina:       "5d414fd3b92808e8da5d3a1f408ac7fdf56e784fe61dcdace501e63d6769e80b"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "dd5ffad6e5a0b251f36f3632c1ca49f852c53b5b91dd98f698e970ae88ed83ce"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "4fa424e83e1aec4d4aad004f5a5c5d10ffdf91298f7ad1d68e4bd99eafcfd610"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "2c7fdecfa825f5ae371fb59dacd67e42ae4dceeccaf4f0dee9bd7c6fa79026cd"
+    sha256 cellar: :any_skip_relocation, monterey:       "4fa424e83e1aec4d4aad004f5a5c5d10ffdf91298f7ad1d68e4bd99eafcfd610"
+    sha256 cellar: :any_skip_relocation, big_sur:        "2c7fdecfa825f5ae371fb59dacd67e42ae4dceeccaf4f0dee9bd7c6fa79026cd"
+    sha256 cellar: :any_skip_relocation, catalina:       "071e9b164b0eaa1d302ce32ffeaa56e9c1158056f3bc7c96222f14ef71293681"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "87398f65a0449b1910797e577a9925147f9db3f334f8066931b756ed2ef5cb7f"
   end
 
   depends_on "git"

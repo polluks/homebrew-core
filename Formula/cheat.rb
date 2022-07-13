@@ -1,18 +1,17 @@
 class Cheat < Formula
   desc "Create and view interactive cheat sheets for *nix commands"
   homepage "https://github.com/cheat/cheat"
-  url "https://github.com/cheat/cheat/archive/4.2.3.tar.gz"
-  sha256 "9624160ba542fb51bbd959d8c68b76f82ea324a6186d8d6d544b0efd8c9cc8ca"
+  url "https://github.com/cheat/cheat/archive/refs/tags/4.2.5.tar.gz"
+  sha256 "727c19efb873e6ea29b922a480074da8e5b73a0d129c3277539484a736527033"
   license "MIT"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "9c42b3375ed5045a77246d43793d358ef77c9b63d0df2fcd6489432ff7e6e151"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "29bc2dffe84cddb513d2d60e975318d5711ee3c271d1df1281748dc218e55e6d"
-    sha256 cellar: :any_skip_relocation, monterey:       "118c51e8357165b252d05b71fa550b43146dfa91c827c878fd2d7e96dcb5fc5e"
-    sha256 cellar: :any_skip_relocation, big_sur:        "555a8eed35239df3eea18eaa0f79d420536c4b37a2c0fe1f918767fee021d813"
-    sha256 cellar: :any_skip_relocation, catalina:       "4764f422ab1b50502ea727005f7b9eaf491e560bb20eb1d76088f5923dde2f67"
-    sha256 cellar: :any_skip_relocation, mojave:         "61b509e154f3bb7a86c7d409d17a7aa69548c0c3815ccb2643e9e0350af98d82"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "85f574d6ebd084427db1c067f98679d7f76ec922297377f073ac0f1b8b680734"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "fb5b688f664d1a90636f0793caff1e8fb1547050ca83d1490ed815580b7b1a41"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "e0c6f4461f88d303b7a49ac0d780a5889d6e9ef11504ffcc1ee91b24b1cda11a"
+    sha256 cellar: :any_skip_relocation, monterey:       "0508db513b9066cb899e4315497c2546146a1b5a27a3e09913a7e3560cba3277"
+    sha256 cellar: :any_skip_relocation, big_sur:        "0741741fe225b99ed5920ef1038d5de247d217f89a32b1be92c7f38e8d20a674"
+    sha256 cellar: :any_skip_relocation, catalina:       "f3b4476b73616177a4694ad45e54a4abb3b972a69d613ab65749e4f13d9de704"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "cad759f0cd1a173289659e881a712388ed4989b9b5f0dcec94a45f473d8c400c"
   end
 
   depends_on "go" => :build

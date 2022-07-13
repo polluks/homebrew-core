@@ -1,9 +1,9 @@
 class Sqlite < Formula
   desc "Command-line interface for SQLite"
   homepage "https://sqlite.org/index.html"
-  url "https://sqlite.org/2022/sqlite-autoconf-3380200.tar.gz"
-  version "3.38.2"
-  sha256 "e7974aa1430bad690a5e9f79a6ee5c8492ada8269dc675875ad0fb747d7cada4"
+  url "https://sqlite.org/2022/sqlite-autoconf-3390000.tar.gz"
+  version "3.39.0"
+  sha256 "e90bcaef6dd5813fcdee4e867f6b65f3c9bfd0aec0f1017f9f3bbce1e4ed09e2"
   license "blessing"
 
   livecheck do
@@ -15,12 +15,12 @@ class Sqlite < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_monterey: "5b6f859aac9956913fdd868f276a381b23aec02b48cc2b12a9af6bce544ebca9"
-    sha256 cellar: :any,                 arm64_big_sur:  "8d0051f26adc3628b1e3c6f0970dd476a064498fbaa5b366dcf0ef4ad7315665"
-    sha256 cellar: :any,                 monterey:       "3707d37c2cb1f0781ffb44e83e6ed5977f66e02d8f85af65946fd8413f473efa"
-    sha256 cellar: :any,                 big_sur:        "26668897544eb6179ccb641a0cdbe8cdb906bf9c6749e588fb21c8b8a2faa8db"
-    sha256 cellar: :any,                 catalina:       "caf153da2b6f71840e4fc0ee6bcb864c4ae8929f6cfde2533dafba1c26d2ad16"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "401a896a0efb4ef35bc8254c0de710db8275707c364b7ab153b94b6c290fc7a9"
+    sha256 cellar: :any,                 arm64_monterey: "e86203eb8b102da96476cf4b1f733753b7aaa9aa07da15a99166525e05f29165"
+    sha256 cellar: :any,                 arm64_big_sur:  "62d52d9f5bec06079f1ae8c7463acc7a08b595e1f23dd8aebd26cc9805a6e075"
+    sha256 cellar: :any,                 monterey:       "f36017168dc933bea4241cae9d327154d162be859df4645297b014a7c4b2835d"
+    sha256 cellar: :any,                 big_sur:        "6a6fd8d58bfc45afa6d4f1700f500acedb533cfe8d3d60ce1a5769dbeff37c23"
+    sha256 cellar: :any,                 catalina:       "951d67f3a26a6e4646e9aea57baabd4061eca61f0bd8f7ac4747fb9610aedca4"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "f17185e07288cf7f6a2c2cdb0e1657a05307670d5814f80268897fff013417dc"
   end
 
   keg_only :provided_by_macos

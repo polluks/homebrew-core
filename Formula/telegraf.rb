@@ -1,8 +1,8 @@
 class Telegraf < Formula
   desc "Server-level metric gathering agent for InfluxDB"
   homepage "https://www.influxdata.com/"
-  url "https://github.com/influxdata/telegraf/archive/v1.22.1.tar.gz"
-  sha256 "ccfcf7ae1dbc1c99f1362742f1680ff7e026a93a90dce82c73de4ff21aeb01dc"
+  url "https://github.com/influxdata/telegraf/archive/v1.23.2.tar.gz"
+  sha256 "01a0a5345a2d74e638e704993366f250195210e1f99f967ca18379ae6c2377d7"
   license "MIT"
   head "https://github.com/influxdata/telegraf.git", branch: "master"
 
@@ -12,12 +12,12 @@ class Telegraf < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "a73e8fe403c61f71fcd944ac897777b50f1b26aac309b6eda49d30144ec8f3b9"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "4e88d76e3f86ecb364ce350e5b43edb644811193f71ea347e5b1ff64e60292da"
-    sha256 cellar: :any_skip_relocation, monterey:       "88ffab9d347eb9c25c716e6a814bfb3ee0bf302c71a6afb7552f75ff40f9e02d"
-    sha256 cellar: :any_skip_relocation, big_sur:        "b0384f1aa61af05ac7900d4b3c33680a89b928dafa317b16603923ee9bb4d778"
-    sha256 cellar: :any_skip_relocation, catalina:       "b766f99a09a3d2d59ad4203c65f0b62daa1fca496fc1ec8641af7b789cb6d3ca"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "584bb3721c194eb70523de249914341646f4e288d353d4522f2bb817554e0d31"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "fe66851fa6f7665ed0873f04320beb3dc8a76b84489dd2cf32a556f466df2f91"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "e9b05682d9dade205b7e90e513d197e039f23a5125fc4b33e3aad9fd87e9b1b5"
+    sha256 cellar: :any_skip_relocation, monterey:       "50175e271a6130a3855b4e6a3bff2952c61c0ca779f19702fca86b08e97f9543"
+    sha256 cellar: :any_skip_relocation, big_sur:        "4b742c7100ba322b2d77b4dba4bad5b277ec42ff8926cb376cbfb2b40effe598"
+    sha256 cellar: :any_skip_relocation, catalina:       "416a07d11d6afe3c35753561c6707cdfb94a1653524ac2f06717aa0425297eaf"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "141ffd94da71d6314ef3745dd95bf0980294522650d434d75cc2f2273355ac67"
   end
 
   depends_on "go" => :build

@@ -1,18 +1,18 @@
 class Criterion < Formula
   desc "Cross-platform C and C++ unit testing framework for the 21st century"
   homepage "https://github.com/Snaipe/Criterion"
-  url "https://github.com/Snaipe/Criterion/releases/download/v2.4.0/criterion-2.4.0.tar.xz"
-  sha256 "b13bdb9e007d4d2e87a13446210630e95e3e3d92bb731951bcea4993464b9911"
+  url "https://github.com/Snaipe/Criterion/releases/download/v2.4.1/criterion-2.4.1.tar.xz"
+  sha256 "d0f86a8fc868e2c7b83894ad058313023176d406501a4ee8863e5357e31a80e7"
   license "MIT"
   head "https://github.com/Snaipe/Criterion.git", branch: "bleeding"
 
   bottle do
-    sha256 cellar: :any, arm64_monterey: "0023dd52165f159b3714626e60a968b2fae23aa4252136a9719a1f008038fafd"
-    sha256 cellar: :any, arm64_big_sur:  "ad565bdd7ddeace8056dbb89fbc278c9af1864a6a8c4573ac56bcd5a466cada0"
-    sha256 cellar: :any, monterey:       "4540263d2c6013dd60143e7f0f5b0c090b20ddf760bdf027c07b8478dd90c69f"
-    sha256 cellar: :any, big_sur:        "5e2cd7bcf2ae4cab91c4b2c9669d48d295e3bfa3f32ef101eb0fc4a4c5f9efe3"
-    sha256 cellar: :any, catalina:       "2bd7d304278a9593d08bba3849ab157b248a7e901efa86e56bd1169773f4ccd5"
-    sha256               x86_64_linux:   "e39a40f48b213e37f0270174ca0836e22459df5c95567de9f498eafa79869534"
+    sha256 cellar: :any, arm64_monterey: "5a284e7291b02f9b99c157baf3023e3a6bbc4ba904999b8b094f6f19db625f71"
+    sha256 cellar: :any, arm64_big_sur:  "756811bab129f1d12072e184806f3d0c2d340ea88eeba2dba470d0e46a0c5cc0"
+    sha256 cellar: :any, monterey:       "7f58f9eaeb7370f5ee50b871afa82dd6da248822b09495e602e551f7345cf7e2"
+    sha256 cellar: :any, big_sur:        "c29c0ee229ff746bbe8b1ff0040376fce39d8ee0a359566ac2304d9b39759b3f"
+    sha256 cellar: :any, catalina:       "2eaaa7be419c50953093f6ad8a9ee33eb22e820f245b1804e3c163a53420aaac"
+    sha256               x86_64_linux:   "fb380b5c7cdb5d367b46807a8ca453a468ed262d1f054fb6824c45c9e8c5d8d5"
   end
 
   depends_on "cmake" => :build

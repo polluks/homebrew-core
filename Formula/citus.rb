@@ -1,18 +1,18 @@
 class Citus < Formula
   desc "PostgreSQL-based distributed RDBMS"
   homepage "https://www.citusdata.com"
-  url "https://github.com/citusdata/citus/archive/v10.2.5.tar.gz"
-  sha256 "748beaf219163468f0b92bf5315798457f9859a6cd9069a7fd03208d8d231176"
+  url "https://github.com/citusdata/citus/archive/v11.0.3.tar.gz"
+  sha256 "a2292fe304e425e145688faf9669d422911ee3ccb0216ae3d12e48e0e574558e"
   license "AGPL-3.0-only"
   head "https://github.com/citusdata/citus.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any,                 arm64_monterey: "5c1284be900f79340a7deb11cab8ec6ae499ae4d5fb3a353c38af68294f605ee"
-    sha256 cellar: :any,                 arm64_big_sur:  "8d8da700da3660cd9bc01aa509a25c7500e571d6353f0b718504d0307462692b"
-    sha256 cellar: :any,                 monterey:       "aed158c5fc1a817655cf33f8fdf52a4b35735ad81740fd40100e93247c3acad4"
-    sha256 cellar: :any,                 big_sur:        "c081472f3ea377cba1898543bbc45f9fbc750c8a53dd538645b16ccda66ba555"
-    sha256 cellar: :any,                 catalina:       "8d206df19b0d0c30e866571deb14ad101f170e8e5cd6574de218a41a266e7b36"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "ed813a71d6e8c6e3c78627707f6bfbf1dd135959f1518748318b956666f62400"
+    sha256 cellar: :any,                 arm64_monterey: "0952be6e5524bb6e15ca4bb0e9ed58bdfad72786dbcc8bdea2ad502222f0aacb"
+    sha256 cellar: :any,                 arm64_big_sur:  "f0b1521e3f27b075eb141fbd9e61ffb1eafbb7a3259945070f79bc82805346c6"
+    sha256 cellar: :any,                 monterey:       "02896a9000428fe5e6b3087e52e6642e9a3ccefb0c52495b9bbc843e7c78fa77"
+    sha256 cellar: :any,                 big_sur:        "1da680511086cd1bb95ca946dca4af72a5e52b8b62179ccaf937d437fcb49a2e"
+    sha256 cellar: :any,                 catalina:       "d1ea6387ec8dccae8ff61b2d1ffca23c6a26aae713f6702f1b97c4b6b4906d45"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "02a1719b291247bdbb80843c87582bf7b667c73c2e0165d19c67e7514ae9136a"
   end
 
   depends_on "lz4"

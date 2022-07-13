@@ -1,8 +1,8 @@
 class SwiProlog < Formula
   desc "ISO/Edinburgh-style Prolog interpreter"
   homepage "https://www.swi-prolog.org/"
-  url "https://www.swi-prolog.org/download/stable/src/swipl-8.4.2.tar.gz"
-  sha256 "be21bd3d6d1c9f3e9b0d8947ca6f3f5fd56922a3819cae03251728f3e1a6f389"
+  url "https://www.swi-prolog.org/download/stable/src/swipl-8.4.3.tar.gz"
+  sha256 "946119a0b5f5c8f410ea21fbf6281e917e61ef35ac0aabbdd24e787470d06faa"
   license "BSD-2-Clause"
   head "https://github.com/SWI-Prolog/swipl-devel.git", branch: "master"
 
@@ -12,25 +12,28 @@ class SwiProlog < Formula
   end
 
   bottle do
-    sha256 arm64_monterey: "139513fc8927d079f0b78a67b532596753680992f49a2695aed9efe7c98f1397"
-    sha256 arm64_big_sur:  "65783eed3844c8e5291d118edfe5fe62a76159cd6633b2c77952baf376bb30e4"
-    sha256 monterey:       "ca133c29a855fdd87964128d30a33b135827a87e5b4dc38324b72d25f1abcf38"
-    sha256 big_sur:        "d3ba87e54537f8da87bbf6b60c0054706fac316ffd60ff4fb7300dadd05a8e64"
-    sha256 catalina:       "bc4eed487d3f941713cd01091962cc258d81962373ee5b3186fa616955479715"
-    sha256 x86_64_linux:   "0a185f53a0e73890c03d0e45135db8cdbc72171c325c4cb7b2d2ff71687b8661"
+    sha256 arm64_monterey: "bba6c21cb68e2797755f6ccd9d74a5d0b706f0ce4971a8064c777f9f88111705"
+    sha256 arm64_big_sur:  "1c64d38e13f55e5b9311c3da51c552ef072666f9ae49dd21dbc3363430d4a4ab"
+    sha256 monterey:       "4ed0f51ce5f3d0c3f6a095d7a3fefbfdfec6330b54a1bbb28ef8453639533ae6"
+    sha256 big_sur:        "3b2acd64c7e3dd679397a0037d88a7a7b82d7a1631ce3fdc85063b5c0ef79670"
+    sha256 catalina:       "795b8881a34b01a04c69eac33ea97075a7ebe029dca7808dcd8c26a187a9d5ea"
+    sha256 x86_64_linux:   "62166856758362848244b7cb2f8c74138db4567b5c29383adf3931c16e9172ed"
   end
 
   depends_on "cmake" => :build
   depends_on "pkg-config" => :build
   depends_on "berkeley-db"
   depends_on "gmp"
-  depends_on "jpeg"
   depends_on "libarchive"
   depends_on "libyaml"
   depends_on "openssl@1.1"
   depends_on "pcre"
   depends_on "readline"
   depends_on "unixodbc"
+
+  uses_from_macos "libxcrypt"
+  uses_from_macos "ncurses"
+  uses_from_macos "zlib"
 
   def install
     # Remove shim paths from binary files `swipl-ld` and `libswipl.so.*`
@@ -41,13 +44,11 @@ class SwiProlog < Formula
       end
     end
 
-    mkdir "build" do
-      system "cmake", "..", *std_cmake_args,
-                      "-DSWIPL_PACKAGES_JAVA=OFF",
-                      "-DSWIPL_PACKAGES_X=OFF",
-                      "-DCMAKE_INSTALL_PREFIX=#{libexec}"
-      system "make", "install"
-    end
+    args = ["-DSWIPL_PACKAGES_JAVA=OFF", "-DSWIPL_PACKAGES_X=OFF"]
+    args << "-DCMAKE_INSTALL_RPATH=@loader_path" if OS.mac?
+    system "cmake", "-S", ".", "-B", "build", *std_cmake_args(install_prefix: libexec), *args
+    system "cmake", "--build", "build"
+    system "cmake", "--install", "build"
 
     bin.write_exec_script Dir["#{libexec}/bin/*"]
   end

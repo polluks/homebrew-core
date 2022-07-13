@@ -1,18 +1,19 @@
 class Eigenpy < Formula
   desc "Python bindings of Eigen library with Numpy support"
   homepage "https://github.com/stack-of-tasks/eigenpy"
-  url "https://github.com/stack-of-tasks/eigenpy/releases/download/v2.7.1/eigenpy-2.7.1.tar.gz"
-  sha256 "00ccf08ce6e72859c5c91f703e4cb91ba724bace2338aa9f7c230d072ddbac19"
+  url "https://github.com/stack-of-tasks/eigenpy/releases/download/v2.7.6/eigenpy-2.7.6.tar.gz"
+  sha256 "71cc2763e891b7ef013b1c0306cdb7e497d6aff9f648dca30997e541b1a6e05a"
   license "BSD-2-Clause"
+  revision 1
   head "https://github.com/stack-of-tasks/eigenpy.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any,                 arm64_monterey: "4b8060326909b1fe402e45e0846f4752f9edcef1eae6b4806dcd14706e02f6ad"
-    sha256 cellar: :any,                 arm64_big_sur:  "121dd9086b4abe7bda835f8ef15e3016f6538d66e5e8786dc9072567cec85727"
-    sha256 cellar: :any,                 monterey:       "0156b643134e5c21bf559382eb3100424ecadb5938d1e934427ac1663de2562e"
-    sha256 cellar: :any,                 big_sur:        "44d97cbbe0947585be494348ff392b30034886679017bd72a205224400735c14"
-    sha256 cellar: :any,                 catalina:       "5b4253d4d4b9cd4847f5fa7c59430581a27302d6934642447bb6c5d21e25d3db"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "c33beff4409c9e9845993cfd44e8c561cd27a68e86cf66958ac9a95617d89c27"
+    sha256 cellar: :any,                 arm64_monterey: "d809f410de5a6a3b7309a7f477f559f404a21f9b6cf5371c2fc564169406800e"
+    sha256 cellar: :any,                 arm64_big_sur:  "bf680c8392414e2f09f2777033c221e5d47d1461ba9863ab02edead9ebac0be5"
+    sha256 cellar: :any,                 monterey:       "5d4f4bf70eda01edec925bb7e77a6b578c2657befe4b268639fea9a44b763b13"
+    sha256 cellar: :any,                 big_sur:        "1b24d4224728fac932275b4910b29160f2dc6ebe0c266e31e5884e210726ee29"
+    sha256 cellar: :any,                 catalina:       "fa04b54dd2757f9d46c95e536ebb9d91b7ad3dc60ac623a750910ec3024bf10d"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "b59fc55b3b62cdf447c83ee76964110ebf9ba04b49da857af9587de23154389a"
   end
 
   depends_on "boost" => :build

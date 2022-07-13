@@ -1,17 +1,17 @@
 class ApachePulsar < Formula
   desc "Cloud-native distributed messaging and streaming platform"
   homepage "https://pulsar.apache.org/"
-  url "https://www.apache.org/dyn/mirrors/mirrors.cgi?action=download&filename=pulsar/pulsar-2.9.2/apache-pulsar-2.9.2-src.tar.gz"
-  mirror "https://archive.apache.org/dist/pulsar/pulsar-2.9.2/apache-pulsar-2.9.2-src.tar.gz"
-  sha256 "66cf22136488aabe443d92284fbb3edb15e1b9d8a64cf498b36236f75af29bbc"
+  url "https://www.apache.org/dyn/mirrors/mirrors.cgi?action=download&filename=pulsar/pulsar-2.10.1/apache-pulsar-2.10.1-src.tar.gz"
+  mirror "https://archive.apache.org/dist/pulsar/pulsar-2.10.1/apache-pulsar-2.10.1-src.tar.gz"
+  sha256 "a8c8fbea39f1447ebc0c4e899198d0acb48dce05c69ceec78cf8e56856af6946"
   license "Apache-2.0"
   head "https://github.com/apache/pulsar.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, monterey:     "e0db8c6b3a3565dbff3778b0ab4e526ee1821e1679c326043502936a4c0304cd"
-    sha256 cellar: :any_skip_relocation, big_sur:      "c2cd45e0f5ccd01a5d33e674bd99ee71f9c0cf9a04f9797590a369afbc7605ac"
-    sha256 cellar: :any_skip_relocation, catalina:     "c7cffc9c7f31d10d51d15ee6ca515d20c17e9429395ab5288f71d13174c65614"
-    sha256 cellar: :any_skip_relocation, x86_64_linux: "bb8b8a862e1fe14691c28f40a23c3304346c7e67693f798ff2372818ed165710"
+    sha256 cellar: :any_skip_relocation, monterey:     "928a661a017e8a16c7ef839f5d5aacb82236f1d589a906f0ab926ac6d89cd127"
+    sha256 cellar: :any_skip_relocation, big_sur:      "99b1b636298fc570d265738771724b49adc16f8274d18d65f60b26ddac764c91"
+    sha256 cellar: :any_skip_relocation, catalina:     "a5c5ed8c563cf8cdcd53cc922da87017de9c310cfb08ff271b38715f674b199c"
+    sha256 cellar: :any_skip_relocation, x86_64_linux: "9e37829a95cd2ff9a8723d4ace933ffb542c6e11ead7539488ac0e6ca3c0bcf4"
   end
 
   depends_on "autoconf" => :build
@@ -22,10 +22,10 @@ class ApachePulsar < Formula
   depends_on "pkg-config" => :build
   depends_on "protobuf" => :build
   depends_on arch: :x86_64
-  depends_on "openjdk@11"
+  depends_on "openjdk@17"
 
   def install
-    with_env("TMPDIR" => buildpath, **Language::Java.java_home_env("11")) do
+    with_env("TMPDIR" => buildpath, **Language::Java.java_home_env("17")) do
       system "mvn", "-X", "clean", "package", "-DskipTests", "-Pcore-modules"
     end
 
@@ -47,7 +47,7 @@ class ApachePulsar < Formula
     libexec.glob("bin/*") do |path|
       if !path.fnmatch?("*common.sh") && !path.directory?
         bin_name = path.basename
-        (bin/bin_name).write_env_script libexec/"bin"/bin_name, Language::Java.java_home_env("11")
+        (bin/bin_name).write_env_script libexec/"bin"/bin_name, Language::Java.java_home_env("17")
       end
     end
   end
@@ -63,6 +63,8 @@ class ApachePulsar < Formula
   end
 
   test do
+    ENV["PULSAR_GC_LOG"] = "-Xlog:gc*:#{testpath}/pulsar_gc_%p.log:time,uptime:filecount=10,filesize=20M"
+    ENV["PULSAR_LOG_DIR"] = testpath
     fork do
       exec bin/"pulsar", "standalone", "--zookeeper-dir", "#{testpath}/zk", " --bookkeeper-dir", "#{testpath}/bk"
     end

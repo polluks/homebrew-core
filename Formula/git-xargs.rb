@@ -1,17 +1,17 @@
 class GitXargs < Formula
   desc "CLI for making updates across multiple Github repositories with a single command"
   homepage "https://github.com/gruntwork-io/git-xargs"
-  url "https://github.com/gruntwork-io/git-xargs/archive/v0.0.14.tar.gz"
-  sha256 "fc9697645d27f487c8b6a2090c7932214a8935c4cd59575dc8969aba0923ee34"
+  url "https://github.com/gruntwork-io/git-xargs/archive/v0.0.16.tar.gz"
+  sha256 "2e2d719df83beaaa59d62ee5b7be140d3e6a683ed570b5b640d4e813d1f4c531"
   license "Apache-2.0"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "942ea3612d4571866bb5d673ca4dd909b64b68ca74401f3fac2404a5d7fe23cc"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "c9e3f75f443d8010f58d0cef966358ed01146b324b8c0965204b626bc53a84c5"
-    sha256 cellar: :any_skip_relocation, monterey:       "d042594dfeecd76a9512ea4704f63ea74188ca0469507b854938c5408880fd9e"
-    sha256 cellar: :any_skip_relocation, big_sur:        "eeaccfa7730e0200449c64181de8c4380543721fa89d234c585c8f905b0ad6df"
-    sha256 cellar: :any_skip_relocation, catalina:       "e1e2a865a2d67839e4562e2261cb47e34d72f57ea88bda57551b2af88530d5ad"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "ad3734718184e6045a7f06d9db4b1cb86fe800d4192691a331d623441059d74d"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "ce0c48982e7e08b6bfe2fd33ee320289041e2198603101ddf0a88ad443b232ac"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "4fb56e259d22e5ff91eb2e49709d2b7aeab097ee93ed4f0d8f0c6cf65c5e3eb3"
+    sha256 cellar: :any_skip_relocation, monterey:       "5a6b7250fcc30c4c3e5a849a122a296a1db3993bdc58149520fffa961110cff9"
+    sha256 cellar: :any_skip_relocation, big_sur:        "e5bd334b7f82daaa03a8199243fd4e1e14007a38e2c2b02768a9369ad79cc46a"
+    sha256 cellar: :any_skip_relocation, catalina:       "131bc65e594516daf82f9b79f222ab59b41d2c28e6d0126995b8273ed285dcda"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "2be1b802aed8929e05dc203d10c5b2d084c5216c37acfa3dfd8d44256ed9daa4"
   end
 
   depends_on "go" => :build

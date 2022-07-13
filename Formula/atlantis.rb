@@ -1,8 +1,8 @@
 class Atlantis < Formula
   desc "Terraform Pull Request Automation tool"
   homepage "https://www.runatlantis.io/"
-  url "https://github.com/runatlantis/atlantis/archive/v0.19.2.tar.gz"
-  sha256 "5c0da4efc288a2cd3f0456619e3048922542a421798ebb834b8800fc4dcf124c"
+  url "https://github.com/runatlantis/atlantis/archive/v0.19.6.tar.gz"
+  sha256 "dacff7d054cc92b175ff048302451a201fce040cfbec86475e1b8d12b734a464"
   license "Apache-2.0"
   head "https://github.com/runatlantis/atlantis.git", branch: "master"
 
@@ -12,12 +12,12 @@ class Atlantis < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "09eebaa12ee2741b1e5ebba4f1f41b929fae1b1fef97b2ef104c7bfb50c1b38e"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "e7632380740cda545a5dc2ab606a3beed71bec4b28f8ba7f5e350ffd25e971cf"
-    sha256 cellar: :any_skip_relocation, monterey:       "e5fe6ebf3ce40571308fd332c8bcb69843608a90f3b55c6a2967a582833a9607"
-    sha256 cellar: :any_skip_relocation, big_sur:        "7a2b4896927d666a0a5b839657db00d6facbf090b67d5674dc5f931ae3364c46"
-    sha256 cellar: :any_skip_relocation, catalina:       "781d78c5be6ca988159def596c97806badfb89681604f82d99bb643e67024fb6"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "836eb15fe5df898f8baf47eb09cfc0eebdf57f8df935751dc7a55c5b1d5b848d"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "206c1476cf733313141a0f8e961dd70eb89b1e2ec2ab192a7d975a8ab1febd19"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "2dc8b71bfe84e87f4285b8401fe7dbf1a7149df8c107f8bc72798d306c483160"
+    sha256 cellar: :any_skip_relocation, monterey:       "7ef4024e7fc115ecd5f7358d493cb37e5324fe29a2db58befe85b04521214ce0"
+    sha256 cellar: :any_skip_relocation, big_sur:        "b9f8f31fda42a3bd594724fa9bfcd31f5159c6d0b6ea655e9f71287584351c27"
+    sha256 cellar: :any_skip_relocation, catalina:       "70a80e9aeca19be1e6e1b069b729752b79e1fad707b704a12c70e2904c69af6b"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "cdffd5c95f089564878b0d44caf3179402b13674f322a8c31a0f34b6b7580d66"
   end
 
   depends_on "go" => :build

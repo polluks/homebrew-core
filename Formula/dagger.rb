@@ -2,18 +2,18 @@ class Dagger < Formula
   desc "Portable devkit for CI/CD pipelines"
   homepage "https://dagger.io"
   url "https://github.com/dagger/dagger.git",
-      tag:      "v0.2.6",
-      revision: "e2c2213a38f9b6d63dc6d0aa07e192ce8613a503"
+      tag:      "v0.2.22",
+      revision: "33bf2080c974b25f1ad370704b23dca893fdb1ea"
   license "Apache-2.0"
   head "https://github.com/dagger/dagger.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "41edadfd889de178d318de62ee9a8020cdcb25ae9b1bb9167449da5ce7e1f366"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "41edadfd889de178d318de62ee9a8020cdcb25ae9b1bb9167449da5ce7e1f366"
-    sha256 cellar: :any_skip_relocation, monterey:       "5f5ebc4a0d34990f4198718eb523ef5ee73b2033803aefd1ef16e75ccb1039f7"
-    sha256 cellar: :any_skip_relocation, big_sur:        "5f5ebc4a0d34990f4198718eb523ef5ee73b2033803aefd1ef16e75ccb1039f7"
-    sha256 cellar: :any_skip_relocation, catalina:       "5f5ebc4a0d34990f4198718eb523ef5ee73b2033803aefd1ef16e75ccb1039f7"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "965ca86370a6765f30ab5256d12a4a8c7e029c6b2d4f9b8a62c7f14b4e02d6c9"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "b3e6d2c3aaa975e88aece0949482342967314f3defd2ae1b730dbfaefc293298"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "b3e6d2c3aaa975e88aece0949482342967314f3defd2ae1b730dbfaefc293298"
+    sha256 cellar: :any_skip_relocation, monterey:       "f13534f77ddf830506a50b1df35bd40630d93e718e4658d8574a0d1225060d11"
+    sha256 cellar: :any_skip_relocation, big_sur:        "f13534f77ddf830506a50b1df35bd40630d93e718e4658d8574a0d1225060d11"
+    sha256 cellar: :any_skip_relocation, catalina:       "f13534f77ddf830506a50b1df35bd40630d93e718e4658d8574a0d1225060d11"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "53d975ea1886168363a38786810426918ed6aad1720609eb418f642061f0d936"
   end
 
   depends_on "go" => :build
@@ -41,10 +41,11 @@ class Dagger < Formula
   test do
     assert_match "v#{version}", shell_output("#{bin}/dagger version")
 
-    system bin/"dagger", "project", "init"
+    system bin/"dagger", "project", "init", "--template=hello"
+    system bin/"dagger", "project", "update"
     assert_predicate testpath/"cue.mod/module.cue", :exist?
 
-    output = shell_output("#{bin}/dagger do test 2>&1", 1)
+    output = shell_output("#{bin}/dagger do hello 2>&1", 1)
     assert_match(/(denied while trying to|Cannot) connect to the Docker daemon/, output)
   end
 end

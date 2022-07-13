@@ -1,27 +1,23 @@
 class I2pd < Formula
   desc "Full-featured C++ implementation of I2P client"
   homepage "https://i2pd.website/"
-  url "https://github.com/PurpleI2P/i2pd/archive/2.41.0.tar.gz"
-  sha256 "7b333cd26670903ef0672cf87aa9f895814ce2bbef2e587e69d66ad9427664e6"
+  url "https://github.com/PurpleI2P/i2pd/archive/2.42.1.tar.gz"
+  sha256 "d52b55cf144a6eedbb3433214c035161c07f776090074daba0e5e83c01d09139"
   license "BSD-3-Clause"
+  revision 1
 
   bottle do
-    sha256 cellar: :any, arm64_monterey: "ecafe792b40cef127a5f34d06b6d4a2d887bbb52468d546cbba494abdb1d3ba9"
-    sha256 cellar: :any, arm64_big_sur:  "e9e10b7b38236e95ee3bc7893bfdf086802c4e2733698e7e767c7514b8beccf2"
-    sha256 cellar: :any, monterey:       "0b9b3ff3efc51f4c88d4b5f565da3778e906d2b948987740b8b1040afbb32867"
-    sha256 cellar: :any, big_sur:        "7396ef0b74e60a44dfbdc46e55c566392c06e5f15116f5ccaa116f504f9252bd"
-    sha256 cellar: :any, catalina:       "f6947aca1840031c034cd43fa36b57e6eaece869ae74054e5fb1c04c6e14eaee"
+    sha256 cellar: :any,                 arm64_monterey: "9f7800b89ff5c1aabd77d70469644c35d0f88b3c1f94ce80756afa42743c40d5"
+    sha256 cellar: :any,                 arm64_big_sur:  "219e4dd3f3413c8dbe7e84aae283d01f926a0349beaf017ad997b7e0fb25df40"
+    sha256 cellar: :any,                 monterey:       "a9c42df467116aecab5accdeb390633d638e8277461e71a58f8ae47cad56c9f5"
+    sha256 cellar: :any,                 big_sur:        "8409e6c6f2894746d6b86187c0dbd8b74126cabe65319ec45a00a745b96187a4"
+    sha256 cellar: :any,                 catalina:       "096a3b46f7eab0b883fa54ec184b427d1f50d15491b1097b78e189014af983d4"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "d1c6ee762c2c05261bd4a1efe7962b5424974b22e79d69c1fa0aa0e61a3b9a89"
   end
 
   depends_on "boost"
   depends_on "miniupnpc"
   depends_on "openssl@1.1"
-
-  # apply commit 5c15a12116c1e4447b94fd0f36caecfd2e5a40de to fix mutex lock on stop
-  patch do
-    url "https://github.com/PurpleI2P/i2pd/commit/5c15a12116c1e4447b94fd0f36caecfd2e5a40de.patch?full_index=1"
-    sha256 "bc3b1234966bd7d7dd13dcc71fd72f8db316b865aa7fb4e7bffa4fdd2efa4eb9"
-  end
 
   def install
     args = %W[
@@ -33,6 +29,8 @@ class I2pd < Formula
 
     args << "USE_AESNI=no" if Hardware::CPU.arm?
 
+    # Homebrew-specific fix to make sure documentation is installed in `share`.
+    inreplace "Makefile.linux", "${PREFIX}/usr/share", "${PREFIX}/share"
     system "make", "install", *args
 
     # preinstall to prevent overwriting changed by user configs

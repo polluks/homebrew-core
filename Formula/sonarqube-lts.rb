@@ -1,8 +1,8 @@
 class SonarqubeLts < Formula
   desc "Manage code quality"
   homepage "https://www.sonarqube.org/"
-  url "https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-8.9.7.52159.zip"
-  sha256 "ce528344a384d0ee5b6ad44b242005a0053914683311ea967c43ff86c81fcc94"
+  url "https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-8.9.9.56886.zip"
+  sha256 "bc31dcdadf85edcbde51fff9c0977412a5e87996f4f51f68a053ec7a44cdb818"
   license "LGPL-3.0-or-later"
 
   livecheck do
@@ -11,10 +11,12 @@ class SonarqubeLts < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_big_sur: "f4b212c262b028ed6c66a5cd2aa0e04fa440026c292bc2162614935d0625bd64"
-    sha256 cellar: :any_skip_relocation, big_sur:       "b05170203410efd95ac67d72c598aed4763923302797f4cae0916b9c1f3378b2"
-    sha256 cellar: :any_skip_relocation, catalina:      "385fdfd81d6826cde16eef701a37ee6c34430ef78ed8b1c6cfbc68e8f56aa125"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "78cacee1de2bbfbd80f62f1d416739f2d61d7154e826a7fcd5353df0c7d8fe0c"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "9d634ca67a5c82334ea2f1c7f34b3deadff0c7a763e7a39ac058dc405af868d6"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "b4d9d3bbeee32aaff8e2abfcc462eadb18605896c87bdea68d0e8fda6f6b9a2c"
+    sha256 cellar: :any_skip_relocation, monterey:       "a4d71d334c14740567a43abb374660da5f76a45eef2b5de8d2513e7a237a0c94"
+    sha256 cellar: :any_skip_relocation, big_sur:        "e843228f6f74a598898b6fcc0a820fb04f415d6b4aa8de7a60eeec6bcebdf0a9"
+    sha256 cellar: :any_skip_relocation, catalina:       "1a46743eda427e53612cbe0e82736b4025261dcc2b1d7e742068e9fbab61d225"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "a3980551b0a52198eb33e37eaf5593cd688bbceeb7e3c242c80856a9f4d89974"
   end
 
   depends_on "java-service-wrapper"

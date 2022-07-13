@@ -2,23 +2,29 @@ class Tilt < Formula
   desc "Define your dev environment as code. For microservice apps on Kubernetes"
   homepage "https://tilt.dev/"
   url "https://github.com/tilt-dev/tilt.git",
-    tag:      "v0.27.2",
-    revision: "325f5b6d4c680375fec7cc6d3918cd3c0f847e93"
+    tag:      "v0.30.4",
+    revision: "50984c5164a16906458154333265da78a6284986"
   license "Apache-2.0"
   head "https://github.com/tilt-dev/tilt.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "f5f96585f98c03060ff3fe1242ba4987b93f7b6397a571c01371ceb45a67a26d"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "9d45c3a0817c617f879847f3ad91b295209a306b8be9c19b783f515cb9e1711f"
-    sha256 cellar: :any_skip_relocation, monterey:       "ecb3fe1398739982e34b81af5c7f013bc17485a6b214c9735ab0e50786ff94bc"
-    sha256 cellar: :any_skip_relocation, big_sur:        "ff25a7cbc088c6981e3babc50d3ed8d2ac822e1e922e8ddd8ed02108a1e848eb"
-    sha256 cellar: :any_skip_relocation, catalina:       "6cb80834cfbfa13628b29cdbff9185cf57093ea3e6979a338d5482e80d32edee"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "28796489a3ec4d8804886e451a1f711820d49d6f890893f8ca7077577ef4aa22"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "a5acac8aa7df79ac20e3cc8abe6da7bfa336c02be39a132cb84f9aad4cd79403"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "d652977660f412104948972770821b1c1f4faee8cbf0861530b926cab97cc403"
+    sha256 cellar: :any_skip_relocation, monterey:       "499a17db531888aef4e68ca2d5af180da9ba60fc6dbaf82ddd4e8e7ece0de09a"
+    sha256 cellar: :any_skip_relocation, big_sur:        "5445097d8944ad424643b205df94d5f6e142aa89002b226701b329ddaad69a53"
+    sha256 cellar: :any_skip_relocation, catalina:       "91ff4b949b12659df81317b005ea86f1a780935dcb512428cc35a67fdddcf17a"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "d5f8ea1350ed50843b86d10fea6b9f20f332f6bf8f15a8532ce2524d1ac65e14"
   end
 
   depends_on "go" => :build
+  depends_on "node@16" => :build
+  depends_on "yarn" => :build
 
   def install
+    # bundling the frontend assets first will allow them to be embedded into
+    # the final build
+    system "make", "build-js"
+
     ENV["CGO_ENABLED"] = "1"
     ldflags = %W[
       -s -w

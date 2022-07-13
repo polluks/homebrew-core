@@ -3,18 +3,18 @@ class Sqlmap < Formula
 
   desc "Penetration testing for SQL injection and database servers"
   homepage "https://sqlmap.org"
-  url "https://github.com/sqlmapproject/sqlmap/archive/1.6.4.tar.gz"
-  sha256 "14585e4fc95006467e52685c4838f024654d7e23cbd84eb12762a55918b8d561"
+  url "https://github.com/sqlmapproject/sqlmap/archive/1.6.6.tar.gz"
+  sha256 "3111017165f0dacdd6a83800b02ef27b17cdb5b31d19eebe44436aaac935f186"
   license "GPL-2.0-or-later"
   head "https://github.com/sqlmapproject/sqlmap.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "01695368a1a603a12720787e67d7c9624e63696550a1f4563049da400be2b710"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "01695368a1a603a12720787e67d7c9624e63696550a1f4563049da400be2b710"
-    sha256 cellar: :any_skip_relocation, monterey:       "acee8fd18b18cd509e1ae6757284c7b54fd4eb483e7a48e181e04fd16a7aa2c2"
-    sha256 cellar: :any_skip_relocation, big_sur:        "acee8fd18b18cd509e1ae6757284c7b54fd4eb483e7a48e181e04fd16a7aa2c2"
-    sha256 cellar: :any_skip_relocation, catalina:       "acee8fd18b18cd509e1ae6757284c7b54fd4eb483e7a48e181e04fd16a7aa2c2"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "087b897322fb0312a5d95a6bd1d04ea6c2d4fce74496e933e4cb2e0380f277bf"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "2905048e828446969572c140b590ab5034072f1611a7af8984b87b5eaddaeb93"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "2905048e828446969572c140b590ab5034072f1611a7af8984b87b5eaddaeb93"
+    sha256 cellar: :any_skip_relocation, monterey:       "c9875b85a430bfc0093d0fdeb194f16d578715d85bc642d88acfc138ac87800c"
+    sha256 cellar: :any_skip_relocation, big_sur:        "c9875b85a430bfc0093d0fdeb194f16d578715d85bc642d88acfc138ac87800c"
+    sha256 cellar: :any_skip_relocation, catalina:       "c9875b85a430bfc0093d0fdeb194f16d578715d85bc642d88acfc138ac87800c"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "ae69758384a5033a4c1a0ba66c8f277e4b5192d2646c4461016f5f15e998ae25"
   end
 
   depends_on "python@3.10"

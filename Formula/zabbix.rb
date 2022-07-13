@@ -1,8 +1,8 @@
 class Zabbix < Formula
   desc "Availability and monitoring solution"
   homepage "https://www.zabbix.com/"
-  url "https://cdn.zabbix.com/zabbix/sources/stable/6.0/zabbix-6.0.2.tar.gz"
-  sha256 "7ca89554bd998abcb9df819264293f7e222b4ef4a225acae3a9362d93c081411"
+  url "https://cdn.zabbix.com/zabbix/sources/stable/6.0/zabbix-6.0.6.tar.gz"
+  sha256 "208cf2bee8e51f039c70790c638fc5013d5ab76dcbfe66ba26d351d479bc45e7"
   license "GPL-2.0-or-later"
   head "https://github.com/zabbix/zabbix.git", branch: "master"
 
@@ -12,16 +12,17 @@ class Zabbix < Formula
   end
 
   bottle do
-    sha256 arm64_monterey: "6c1ab209fb2f309edf03d46a67c644e010377c7b1dd33fb9263fcf37be04789d"
-    sha256 arm64_big_sur:  "41d847901fa5c4dc60fda36d1b9ec42a49dda23ac6cff42874bbfd24a5af5643"
-    sha256 monterey:       "a9eb4186f2ffeaead860202729559f0908acf95466f3163cccb55c7d08f84ca9"
-    sha256 big_sur:        "57600b85df1e8c44ce0ea1cffb82490c8ecc04cf31e2a39cf257875590fbfa6e"
-    sha256 catalina:       "4c89f30a54967360e02fcf09c517d290bdd71bc6107756bd1bba5b9cfd7dcf5d"
-    sha256 x86_64_linux:   "6e147b59679517e6843aa84a92aadbbdf8e772973b84e977ccbb894428ea3fe1"
+    sha256 arm64_monterey: "7dd2d7f625a3b16483491366f7e652f73ae3ca94fc4ee5efdd824ffe4e7a8bf9"
+    sha256 arm64_big_sur:  "3254242b633bcc69cba5eefa3ef54928df48a7ad773e86e7ac9f6f36f6ff380f"
+    sha256 monterey:       "2f2e9cf54b3b1c58dc7c33b4faba3b33ac70cb867e650b65f34ea70a473ba752"
+    sha256 big_sur:        "c95a385602b7131468877815ffa2de1d5b5420c5e49768b92ba821d5c169b471"
+    sha256 catalina:       "16ab2f0554078c62856fb995b15aa5eea3ced01b2a6eb6146e8b142662425e16"
+    sha256 x86_64_linux:   "351e6b86ce32466a8b509f5efd734205ff23cb4471ea5dbb66ebb38a3d3232f0"
   end
 
-  depends_on "openssl@1.1"
-  depends_on "pcre"
+  depends_on "pkg-config" => :build
+  depends_on "openssl@3"
+  depends_on "pcre2"
 
   def install
     args = %W[
@@ -29,8 +30,8 @@ class Zabbix < Formula
       --prefix=#{prefix}
       --sysconfdir=#{etc}/zabbix
       --enable-agent
-      --with-libpcre=#{Formula["pcre"].opt_prefix}
-      --with-openssl=#{Formula["openssl@1.1"].opt_prefix}
+      --with-libpcre2
+      --with-openssl=#{Formula["openssl@3"].opt_prefix}
     ]
 
     if OS.mac?

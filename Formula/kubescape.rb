@@ -1,18 +1,18 @@
 class Kubescape < Formula
   desc "Kubernetes testing according to Hardening Guidance by NSA and CISA"
   homepage "https://github.com/armosec/kubescape"
-  url "https://github.com/armosec/kubescape/archive/v2.0.150.tar.gz"
-  sha256 "af6dcda929ab46087c1e1e0c03d05ea0c63189e3e9af97eddc13fe08752541b8"
+  url "https://github.com/armosec/kubescape/archive/v2.0.161.tar.gz"
+  sha256 "165222d24db46b70a664fd70e8918f478c39c05ef30bbcbfb57c05307d88ce6a"
   license "Apache-2.0"
   head "https://github.com/armosec/kubescape.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "ad20c746813c4fdab9ecefb4ad2c918532d95d6feccb08f4a4b7c2b6a94c81cd"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "9f24c7464a6fb5ec7c760c5a638aec89e69e6cb2bd167f74512f0272580f6e47"
-    sha256 cellar: :any_skip_relocation, monterey:       "45941e331e0de3bdcaacb13d8c358539f9509cd4d1dbdb220b5a8c39e414625d"
-    sha256 cellar: :any_skip_relocation, big_sur:        "fa8155e89f78595d0a31f072d77b8c4f4452cb6b7e6c80a9b00f322318803d3a"
-    sha256 cellar: :any_skip_relocation, catalina:       "bda0911d979540e4777a3826ac5261dd44f6804728bb8ca8a400d878ee200ad7"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "0dee0b74785140c5acc9db7d7d5dd45d818010f1b2ebf9157af16492e639f957"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "69ef7dc344edda8dc0cf2cebdf86169a63675fd0fbe08c9e57707add42839a3a"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "264415412177372be6ce2e92673a7469115ff6ce6c29a6efec1eb2a733821695"
+    sha256 cellar: :any_skip_relocation, monterey:       "b33d66b12dbd461c7038a53fde23f027046ca30efe51bf66407abe96abf5d934"
+    sha256 cellar: :any_skip_relocation, big_sur:        "b38436d3d186c443b5deb669ac7be828296618d0f938dd68dc97340517d58f8b"
+    sha256 cellar: :any_skip_relocation, catalina:       "520774f9ca98acc82a4f86d2cc36e83684ad411f41bed5c262296647e1787b5d"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "a8f380152c0c592450d46da3f3731853a452de6fe0a2fe824212465711ff6a9d"
   end
 
   depends_on "go" => :build
@@ -20,11 +20,10 @@ class Kubescape < Formula
   def install
     ldflags = %W[
       -s -w
-      -X github.com/armosec/kubescape/core/cautils.BuildNumber=v#{version}
+      -X github.com/armosec/kubescape/v2/core/cautils.BuildNumber=v#{version}
     ]
-    cd "cmd" do
-      system "go", "build", *std_go_args(ldflags: ldflags)
-    end
+
+    system "go", "build", *std_go_args(ldflags: ldflags)
 
     output = Utils.safe_popen_read(bin/"kubescape", "completion", "bash")
     (bash_completion/"kubescape").write output
@@ -35,7 +34,7 @@ class Kubescape < Formula
   end
 
   test do
-    manifest = "https://raw.githubusercontent.com/GoogleCloudPlatform/microservices-demo/b8fe8900ca1da10c85c9a203d9832b2ee33cc85f/release/kubernetes-manifests.yaml"
+    manifest = "https://raw.githubusercontent.com/GoogleCloudPlatform/microservices-demo/main/release/kubernetes-manifests.yaml"
     assert_match "FAILED RESOURCES", shell_output("#{bin}/kubescape scan framework nsa #{manifest}")
 
     assert_match version.to_s, shell_output("#{bin}/kubescape version")

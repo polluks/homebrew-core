@@ -4,8 +4,8 @@ class Podman < Formula
   license "Apache-2.0"
 
   stable do
-    url "https://github.com/containers/podman/archive/v4.0.3.tar.gz"
-    sha256 "e3b53fc9142d4f2dc085f17a377d92ffb8bfe7756c4f47b8128b38bcc3540cbc"
+    url "https://github.com/containers/podman/archive/v4.1.1.tar.gz"
+    sha256 "27bf32e9b1afee94cb08ebd59389104788d687f402a541f3631f94c7916b10a5"
     resource "gvproxy" do
       url "https://github.com/containers/gvisor-tap-vsock/archive/v0.3.0.tar.gz"
       sha256 "6ca454ae73fce3574fa2b615e6c923ee526064d0dc2bcf8dab3cca57e9678035"
@@ -13,12 +13,12 @@ class Podman < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "d1b7e427ca2bc38957a4455e1beafeb42df4f454e4720d80c5e08df99d490c11"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "65c7531cede713e450859f725b709ab684b9e2b3ac53e2a09284538728046d61"
-    sha256 cellar: :any_skip_relocation, monterey:       "a69aa668172be5b2870da5bb45f944baa4c2b1285ecf81ca8e7cce46b39b8260"
-    sha256 cellar: :any_skip_relocation, big_sur:        "d1bfadd2a72a22c889d186e3323e6b5606ff0255ae77ae6030cb0433c0875b7b"
-    sha256 cellar: :any_skip_relocation, catalina:       "52859377261c37ccd6dc1cabf4f1e8d07618e4942d82da4c641a842967c095e7"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "7625c294d41ea3d920b847539abc0b2210559b9f663b9a14f769897c28c02164"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "0389d5ec1489959bc7ff0a558ebf9816317942d5de988cf1739e1c0fc667b598"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "11d99816bb8cd41781a5d312a1547a89180536fb445445336c637c7d46e9ded3"
+    sha256 cellar: :any_skip_relocation, monterey:       "f04d10389ef24a0a258ce1e5ddf14f290420eaff555f58ecdf1495f930ae90f4"
+    sha256 cellar: :any_skip_relocation, big_sur:        "3a8967d5b501cbccd23f943971d56b36ac7f0694962ea153c50e6727f933a9a3"
+    sha256 cellar: :any_skip_relocation, catalina:       "2fbadb9d67779137c4a26f402bd7f8414d98e693c6809268131b7abc8e4a9a09"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "b1997012b073de38e3c113c15e29f3dae12b0e09f93cc3e30fc6003a6e808102"
   end
 
   head do
@@ -32,6 +32,13 @@ class Podman < Formula
   depends_on "go" => :build
   depends_on "go-md2man" => :build
   depends_on "qemu"
+
+  # Fixes compatability with qemu 7.0.0. Can be removed next release.
+  # See: https://github.com/containers/podman/issues/14303
+  patch do
+    url "https://github.com/containers/podman/commit/9fac1b335f681400a029e9d8014f45fa5634ec40.patch?full_index=1"
+    sha256 "161a0ce3d1012ae030790a16857278e4417b3b410dce68927a6b02a43cf090ba"
+  end
 
   def install
     ENV["CGO_ENABLED"] = "1"

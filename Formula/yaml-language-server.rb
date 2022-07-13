@@ -3,17 +3,17 @@ require "language/node"
 class YamlLanguageServer < Formula
   desc "Language Server for Yaml Files"
   homepage "https://github.com/redhat-developer/yaml-language-server"
-  url "https://registry.npmjs.org/yaml-language-server/-/yaml-language-server-1.6.0.tgz"
-  sha256 "e9115f7de1c509ee056f4397f1394aa4b7c6781a1bc212d53d9756af1547b0b2"
+  url "https://registry.npmjs.org/yaml-language-server/-/yaml-language-server-1.9.0.tgz"
+  sha256 "cb9ca88f3a62a8d0d17dc08b16c8925d549c6f717da93b231a86af5585270434"
   license "MIT"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "3a9b19e9a8d710e157af2a728c238d292251b058583c7b38bf687b8d9ca9e75a"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "3a9b19e9a8d710e157af2a728c238d292251b058583c7b38bf687b8d9ca9e75a"
-    sha256 cellar: :any_skip_relocation, monterey:       "43936d2be141ed4dda280164fe69abbe38a3a0ed5b93981c3ccd75cde21f583e"
-    sha256 cellar: :any_skip_relocation, big_sur:        "43936d2be141ed4dda280164fe69abbe38a3a0ed5b93981c3ccd75cde21f583e"
-    sha256 cellar: :any_skip_relocation, catalina:       "43936d2be141ed4dda280164fe69abbe38a3a0ed5b93981c3ccd75cde21f583e"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "3a9b19e9a8d710e157af2a728c238d292251b058583c7b38bf687b8d9ca9e75a"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "0cf9c5443359af076f5f67cd18bcb12c6ac730ac94d5d4cb9867d8c5466f10f5"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "0cf9c5443359af076f5f67cd18bcb12c6ac730ac94d5d4cb9867d8c5466f10f5"
+    sha256 cellar: :any_skip_relocation, monterey:       "5563686f6b55a914de55505acb0ad959f576844f40f0ead5f0a2fd29f1e40e14"
+    sha256 cellar: :any_skip_relocation, big_sur:        "5563686f6b55a914de55505acb0ad959f576844f40f0ead5f0a2fd29f1e40e14"
+    sha256 cellar: :any_skip_relocation, catalina:       "5563686f6b55a914de55505acb0ad959f576844f40f0ead5f0a2fd29f1e40e14"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "0cf9c5443359af076f5f67cd18bcb12c6ac730ac94d5d4cb9867d8c5466f10f5"
   end
 
   depends_on "node"

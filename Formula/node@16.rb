@@ -1,8 +1,8 @@
 class NodeAT16 < Formula
   desc "Platform built on V8 to build network applications"
   homepage "https://nodejs.org/"
-  url "https://nodejs.org/dist/v16.14.2/node-v16.14.2.tar.xz"
-  sha256 "e922e215cc68eb5f94d33e8a0b61e2c863b7731cc8600ab955d3822da90ff8d1"
+  url "https://nodejs.org/dist/v16.16.0/node-v16.16.0.tar.xz"
+  sha256 "145151eff3b2aa5ebe73384009c52271a83740ae687a93c98c628cd7d52736eb"
   license "MIT"
 
   livecheck do
@@ -11,12 +11,12 @@ class NodeAT16 < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_monterey: "148943a35c2a340ec83de7639480c6a8f4987589548a1a12e3fa29196684e820"
-    sha256 cellar: :any,                 arm64_big_sur:  "4db17e518c75c09fd7fcff0ece25028af3cbfbb7cef308a50a825f251410d53f"
-    sha256 cellar: :any,                 monterey:       "e9611e9b8762facc5ba4c5c7c9906d9430479122c5eba98af1121917867c6a94"
-    sha256 cellar: :any,                 big_sur:        "4eb9f91589c6e9c4446e74218bee91cd08d76ca196e23fa4a26c0dfd7bc169ee"
-    sha256 cellar: :any,                 catalina:       "bae288be6caa5763fe9bde1f16f5700ab0a4fdfec5ee5bb698a9681204cdaaa3"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "e0b88f8ec73a5007853697e0b4b1a122141454c600fc0924e940b545ea729861"
+    sha256 cellar: :any,                 arm64_monterey: "5c6ae1e595e060427f9bad74738707d2d20eb953c79a732d9394a4064488601c"
+    sha256 cellar: :any,                 arm64_big_sur:  "992decc76b2647e59d8b24d0d8994eb8e2b02573c8aad97ef1697ff35be69fcc"
+    sha256 cellar: :any,                 monterey:       "2ce0ecc46ad0015945f9a062af463917420a76eea32c6624e6cb9526cb7cbf91"
+    sha256 cellar: :any,                 big_sur:        "8758ad0e68a656f5409e07f961718b682cad25016a6f7c8ca92cd31abdd0ea63"
+    sha256 cellar: :any,                 catalina:       "9e3f1e7befb1692654166c6127f48640602ec8062bc122d6b139a75b2eb88601"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "0f41eb233087c9c957accdf022702ba2b37f6a3e7d9eb3d3f77e5ebc20c2b715"
   end
 
   keg_only :versioned_formula
@@ -43,13 +43,6 @@ class NodeAT16 < Formula
   end
 
   fails_with gcc: "5"
-
-  # Fixes node incorrectly building vendored OpenSSL when we want system OpenSSL.
-  # https://github.com/nodejs/node/pull/40965
-  patch do
-    url "https://github.com/nodejs/node/commit/65119a89586b94b0dd46b45f6d315c9d9f4c9261.patch?full_index=1"
-    sha256 "7d05debcfaf7bcbce75e28e3e5b2a329fe9bbb80f25b7b721e1b23f20db4dc40"
-  end
 
   def install
     # make sure subprocesses spawned by make are using our Python 3

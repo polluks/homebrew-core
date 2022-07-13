@@ -1,8 +1,8 @@
 class Goreman < Formula
   desc "Foreman clone written in Go"
   homepage "https://github.com/mattn/goreman"
-  url "https://github.com/mattn/goreman/archive/v0.3.11.tar.gz"
-  sha256 "2ff6a2746f17b00fe13ae942b556f346713e743de9a0f66208d63fe2d5586063"
+  url "https://github.com/mattn/goreman/archive/v0.3.13.tar.gz"
+  sha256 "dfc20682714626c69db2fde9ce48432e7116f267488a123b79d72f6dabcca7a3"
   license "MIT"
   head "https://github.com/mattn/goreman.git", branch: "master"
 
@@ -12,12 +12,12 @@ class Goreman < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "f84399eff06321a5b182e2bf72db14cf1d16ea66de880ed28ae21d84c3049530"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "617893eee7167522eef137b451a75c58ebf61763342873c5931e8489c8048f5c"
-    sha256 cellar: :any_skip_relocation, monterey:       "47ef7cb6bd2b6dd3c369699979a1a627507d80e2b55c6c591f3fd339db8bfab2"
-    sha256 cellar: :any_skip_relocation, big_sur:        "3cbad1a55ba81b99570db12e9223b9be3ccacfb2064bb8811cdf63307141430b"
-    sha256 cellar: :any_skip_relocation, catalina:       "ac244b86a6b0fc62a1f04d68914f303abd7a1f29ada7650643797c43720c2973"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "7551327a1f817fa1778cd790ca681ea2fc46d3dcea41780158f96cf91a512cab"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "986155fa8952bfc2f2e642a3dd8fef50d273fe086aa7a4c33774a4d13f4eca18"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "f4b24f1d784da2b808ef927b8432d0a8cc12ba573f4a5e714be0eaeb735eb8c1"
+    sha256 cellar: :any_skip_relocation, monterey:       "8a43d0685955570af59741794d37c4b215860b2b3c9d60823774b2c047a1cf98"
+    sha256 cellar: :any_skip_relocation, big_sur:        "bab40f093c03c2e988489dee4ab7387df524831e21c502c9585846f41c3a7735"
+    sha256 cellar: :any_skip_relocation, catalina:       "31c67a12dc71a363b8ba88fbeff4c15eabc40aeb8cc194aabb123752744fc673"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "d6966ffced430d09be24f06c54954cdfba15a149e9d1d518c883a7ff3a9f150b"
   end
 
   depends_on "go" => :build

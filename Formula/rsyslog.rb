@@ -1,9 +1,10 @@
 class Rsyslog < Formula
   desc "Enhanced, multi-threaded syslogd"
   homepage "https://www.rsyslog.com/"
-  url "https://www.rsyslog.com/files/download/rsyslog/rsyslog-8.2112.0.tar.gz"
-  sha256 "6a2a973861e9266db37bd2b7b9f672b6b970bfcd743a397b8eee6b0dc4852c41"
+  url "https://www.rsyslog.com/files/download/rsyslog/rsyslog-8.2206.0.tar.gz"
+  sha256 "a1377218b26c0767a7a3f67d166d5338af7c24b455d35ec99974e18e6845ba27"
   license all_of: ["Apache-2.0", "GPL-3.0-or-later", "LGPL-3.0-or-later"]
+  revision 1
 
   livecheck do
     url "https://www.rsyslog.com/downloads/download-v8-stable/"
@@ -11,15 +12,16 @@ class Rsyslog < Formula
   end
 
   bottle do
-    sha256 arm64_monterey: "5b5ad8fe75e4d1c4b4ce173c3cdde2fed8d3b208fa40eceaab622d7288aa0b21"
-    sha256 arm64_big_sur:  "a6510d81d3199a3c0ca3c8b54a2231e90551dd6b31b7e230bc78160949bcd5af"
-    sha256 monterey:       "4fee85d2052620ae51cea97be0d467fc02f3f0445267e3cd5e25ec0dc0d6f569"
-    sha256 big_sur:        "27d2c05b98abe4614b4f191946d4a4420e556504785f7adedd8828cc6a6f4797"
-    sha256 catalina:       "3bffe649152d125520bde16a5f80b00487a2b2dbd4c4bfe058b9211ecbca1cf2"
-    sha256 x86_64_linux:   "148a18a831153087026d22e90cac97f7a9c2c9be8b0ffac67221bc73d3a1c1a9"
+    sha256 arm64_monterey: "fe1ddb1079eff2990189bfd9fe42ef73d23da5632469c975edf5f5fda485533f"
+    sha256 arm64_big_sur:  "df837498be1b1076a9be313d9ecc8b6a3fe9112888263bacc692bcfe07c2d8a9"
+    sha256 monterey:       "a3a67b29caf18c88c5e270c4fe20b46ef76b28bc36b5ca2a0b5b8ada41aac699"
+    sha256 big_sur:        "208cb1aadcabe729e8efd79f8c8525d1cfbff51fc621e195fa209595643b0446"
+    sha256 catalina:       "66943603d3a17f0b53b634b0597674c2c713a00e95dada6d34dfb3a4b7aea92a"
+    sha256 x86_64_linux:   "3a3ce732fe9ca2c455999d140a2915326acbcb927a2f8776e5f7027777ef22d4"
   end
 
   depends_on "pkg-config" => :build
+  depends_on "gnutls"
   depends_on "libestr"
 
   uses_from_macos "curl"
@@ -46,7 +48,8 @@ class Rsyslog < Formula
                           "--enable-usertools",
                           "--enable-diagtools",
                           "--disable-uuid",
-                          "--disable-libgcrypt"
+                          "--disable-libgcrypt",
+                          "--enable-gnutls"
     system "make"
     system "make", "install"
 

@@ -1,17 +1,17 @@
 class Melody < Formula
   desc "Language that compiles to regular expressions"
   homepage "https://yoav-lavi.github.io/melody/book"
-  url "https://github.com/yoav-lavi/melody/archive/refs/tags/v0.14.3.tar.gz"
-  sha256 "812f058c60eba281758288d14f7a605d5684995b12a5598da73cb49d840eeda4"
+  url "https://github.com/yoav-lavi/melody/archive/refs/tags/v0.18.1.tar.gz"
+  sha256 "c68c05c0d87d4ab1069196f339043252fb1754395d8e5504f5295a2fadcc51d2"
   license "MIT"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "f25c8573b97feee67367b12b5361570a7c18660d2eee2338aff049e0ddc2fabb"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "98c9676a347c381603ec1a2f75ed02b13ea88f8d33c9c3aedfd1577005b10e63"
-    sha256 cellar: :any_skip_relocation, monterey:       "61673361ee72b1e643b5e4656fa2e6fba57b939879c4c8104d93dd7deada55d0"
-    sha256 cellar: :any_skip_relocation, big_sur:        "83acdd5170a9d6c7d3ce666a0fa893e4260f9736f6d5ea3af8bfb6d2cb6767b5"
-    sha256 cellar: :any_skip_relocation, catalina:       "7a4b6786f336d658edff893980d29407d3f90d5308203b1ab2a5267973a901c3"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "54bb7ac7a139fde0d3461c17c6aeb4a70560b4d7c70a556a5dd20ec055ee30d9"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "2f814ba14939959f4db8a8f4c983f2889d61da637c5b07c1bd2cd1102be4eebc"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "38d60a813a8a7c3697d207adafd0fdeb51f6c170b5f5bc15f1ad07b70676d991"
+    sha256 cellar: :any_skip_relocation, monterey:       "15d783b6c4f97ea55f6ba74329566a1d62f6bf1d9e7daa792ed53bfd3172288e"
+    sha256 cellar: :any_skip_relocation, big_sur:        "9a25ec8fe71351c002003dd589f3eb747095744adc4f094c994a562ac92710c5"
+    sha256 cellar: :any_skip_relocation, catalina:       "7729fb554495e55258a80723be572595b68a77f10bb97a7a40cfb7803a0d3836"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "ebe39d3d00ad6bcdeb3874907202bf8289f5f8862cdeb736a9d50bc63abf7e64"
   end
 
   depends_on "rust" => :build

@@ -5,8 +5,8 @@ class Yaz < Formula
   revision 2
 
   stable do
-    url "https://ftp.indexdata.com/pub/yaz/yaz-5.31.1.tar.gz"
-    sha256 "14cc34d19fd1fd27e544619f4c13300f14dc807088a1acc69fcb5c28d29baa15"
+    url "https://ftp.indexdata.com/pub/yaz/yaz-5.32.0.tar.gz"
+    sha256 "04d08c799d5ee56a2670e6ac0b42398d2ff956bd9bf144bfe9c4c30e557140e0"
   end
 
   livecheck do
@@ -15,12 +15,12 @@ class Yaz < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_monterey: "923f0919d3e65c3b61ad8f90641db2dbb199b53cd6ecf651add576633e35b67c"
-    sha256 cellar: :any,                 arm64_big_sur:  "c50a90da020887b4a7f6ca986061225ae1493cc1ea5bc0da7c4f5e8cdca54e4b"
-    sha256 cellar: :any,                 monterey:       "d4573e9eba835bde601ad2f3e202844e9267f5514b5f83662d800c552cee1be8"
-    sha256 cellar: :any,                 big_sur:        "ae3de529018e63dda8090880bcd454e3725ca2729b94df67140b8b6ffed0143b"
-    sha256 cellar: :any,                 catalina:       "f867dbc67ba829e5e905ab6d9dec27c3b342873903b6dcbf71404a4e6ebbfeed"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "febd7d4ad3b81e84619eaa27dc033e5756d917e0b2f784f6d260f6ffe08178b0"
+    sha256 cellar: :any,                 arm64_monterey: "f157fba7d75b021eac87c073bd0aee42ee9838a4ebcf1a216ebba8055f0c1489"
+    sha256 cellar: :any,                 arm64_big_sur:  "6c534ea2dafa4fbe23f9c9ce458fb705be1ee5cc1dfe9416b16e487e805d39d9"
+    sha256 cellar: :any,                 monterey:       "eb67c9eb73efc925f3456b6de76832c6075951f30aa633eedb14f290bc8d5abe"
+    sha256 cellar: :any,                 big_sur:        "aab863f69a8ab8be039cd1929d7d86780c6c4260844ac24a5f1891d002d70cc2"
+    sha256 cellar: :any,                 catalina:       "4b42397bd3ffed6d39bbfda92b6e1778c2947292c9f475c8e87ac64452448188"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "dc637af22728871a5bbd58d9d91acc89b51d7633876eabe9ba2ce91180abea78"
   end
 
   head do
@@ -52,6 +52,19 @@ class Yaz < Formula
                           "--with-xml2",
                           "--with-xslt"
     system "make", "install"
+
+    # Replace dependencies' cellar paths, which can break build for dependents
+    # (like `metaproxy` and `zebra`) after a dependency is version/revision bumped
+    inreplace bin/"yaz-config" do |s|
+      s.gsub! Formula["gnutls"].prefix.realpath, Formula["gnutls"].opt_prefix
+      s.gsub! Formula["icu4c"].prefix.realpath, Formula["icu4c"].opt_prefix
+    end
+    unless OS.mac?
+      inreplace [bin/"yaz-config", lib/"pkgconfig/yaz.pc"] do |s|
+        s.gsub! Formula["libxml2"].prefix.realpath, Formula["libxml2"].opt_prefix
+        s.gsub! Formula["libxslt"].prefix.realpath, Formula["libxslt"].opt_prefix
+      end
+    end
   end
 
   test do

@@ -1,17 +1,17 @@
 class Thanos < Formula
   desc "Highly available Prometheus setup with long term storage capabilities"
   homepage "https://thanos.io"
-  url "https://github.com/thanos-io/thanos/archive/v0.25.2.tar.gz"
-  sha256 "c77fe0ec6ce596506fd200548ec90dafe0bd268cdf0e0fb965a2ff2648b18e03"
+  url "https://github.com/thanos-io/thanos/archive/v0.27.0.tar.gz"
+  sha256 "d22127bfff06c277195789a896d7b96ee495fa6113617ce8c3177379536c52d2"
   license "Apache-2.0"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "08f0d3ca8fd91901eb9921d128ed9c2cb56031b7ad6fc3f40777e1f77d4208f4"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "59f871c253dfe4f5da119e491c212f74e6862a927aa6778011b4d2ded5f77b49"
-    sha256 cellar: :any_skip_relocation, monterey:       "10b1cb40a1fc3e3ac56398d8fdd1b147959aa16cdbedd651e1f257c8b407e8bc"
-    sha256 cellar: :any_skip_relocation, big_sur:        "0cc1b9f51f459e0e29ebac470bb2ff6a0563dbc3f6d447d21c91554ddb80bfe1"
-    sha256 cellar: :any_skip_relocation, catalina:       "3a783c6632fe556170152f67081c7aed03e93b5461d433a7f4b56857304183f5"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "b92f8ac455c5a43fb57b5ff06a9edf9b252f1fa2c395d3d5e4dda7ab26ef116a"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "aadad4ecf3e3b3f3fd376b6765ec4b0656d4f307d372a037422cfde845546c0a"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "73778b7316f6ccb7c336ab1db26554105a396bcaf494c182947525ccefdcd681"
+    sha256 cellar: :any_skip_relocation, monterey:       "b83be437963c722be7ae78b8b8986587e8124a0660bf8a7a07383d7f41e9d0f6"
+    sha256 cellar: :any_skip_relocation, big_sur:        "5a37b690211c8b396c68e4f613127cdbb11927898d5b82166ae5d9620fdc0fc2"
+    sha256 cellar: :any_skip_relocation, catalina:       "2a0a34152ceb265bc009d0dc71b1d1748276a052abb05d51f04b73acf1a118b0"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "c78c7cbb0b8e2597e3d970fa73caa60dac66ce055ddeeb13a38396734516147f"
   end
 
   depends_on "go" => :build

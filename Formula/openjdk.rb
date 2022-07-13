@@ -1,8 +1,8 @@
 class Openjdk < Formula
   desc "Development kit for the Java programming language"
   homepage "https://openjdk.java.net/"
-  url "https://github.com/openjdk/jdk/archive/jdk-18-ga.tar.gz"
-  sha256 "a57f568bb77a8a737a83f3488c645ab57596e146e6026a0fcca307ff706d90bd"
+  url "https://github.com/openjdk/jdk18u/archive/jdk-18.0.1.1-ga.tar.gz"
+  sha256 "a7d6c43c859ba3320d3e4a8fde94804811723ba66afb52caab28953d0ab3010e"
   license "GPL-2.0-only" => { with: "Classpath-exception-2.0" }
 
   livecheck do
@@ -11,17 +11,19 @@ class Openjdk < Formula
   end
 
   bottle do
-    sha256 cellar: :any, arm64_monterey: "5d57330404f7849f1f318f4e62e58fdbb54d444cd9e270d6fa90f7555e079519"
-    sha256 cellar: :any, arm64_big_sur:  "84f1c4aa89838749d677a8d847cfc17a28b8c92018666044064bf4ce09fd5daf"
-    sha256 cellar: :any, monterey:       "4dd7f34b5332238ad7fe9723dd5f310c0be796cac56b76e90ea3d6f95f55090e"
-    sha256 cellar: :any, big_sur:        "f5dbd01c18691aee85292f19fa03e0f45ce21ce3cddcad15aaed85e49364b297"
-    sha256 cellar: :any, catalina:       "8b52bb7178876303e3b701680cc0e477bbefacd33c53543bdf4487f4d68a100a"
-    sha256               x86_64_linux:   "3eb9185cdcb6ed7442746d2ec950865059576d078da0233375ec0dde60bac53a"
+    sha256 cellar: :any, arm64_monterey: "9fed2650a83504643d6b54ebc8213f04afc3f662d63f2f6940adb23f161794b2"
+    sha256 cellar: :any, arm64_big_sur:  "3bb0f3cd79d484150fddb482f76e9915724564ec287685908a8c1cfca6104663"
+    sha256 cellar: :any, monterey:       "820101dd1b10fa32cb7b4906aa994ab9c3679260c3e8758dc85f9c5afe57a9f7"
+    sha256 cellar: :any, big_sur:        "d4ca020b8b6ffc1bbd37855758d348d774faf39f4e1a4d435a77b9d6c0ce7a66"
+    sha256 cellar: :any, catalina:       "fb150f990c371872861091dd75d98ab52bce1e53bae0843a0b14c442b3a3cca0"
+    sha256               x86_64_linux:   "979607bfb38abc179dea5254ccf377308ed32ceff1eabef5c854198b78c51235"
   end
 
   keg_only :shadowed_by_macos
 
   depends_on "autoconf" => :build
+  depends_on xcode: :build
+  depends_on macos: :catalina
 
   on_linux do
     depends_on "pkg-config" => :build

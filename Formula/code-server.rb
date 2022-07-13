@@ -1,22 +1,22 @@
 class CodeServer < Formula
   desc "Access VS Code through the browser"
-  homepage "https://github.com/cdr/code-server"
-  url "https://registry.npmjs.org/code-server/-/code-server-4.3.0.tgz"
-  sha256 "f36820644e4ec474e5b6d5d7172ab84e1187318e1a61aaff96eaf3cea53d0459"
+  homepage "https://github.com/coder/code-server"
+  url "https://registry.npmjs.org/code-server/-/code-server-4.5.0.tgz"
+  sha256 "9c689bfdbf4bcf57317f32b18427b7fe7418d7623ff9faf2107fc513a93eb326"
   license "MIT"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "3a3c504be6de65b21934dbeeefff2f5048a17a5558d060a350b6c6cf709ab85b"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "966fb64df419e7f2271b748d2f30039765d08ba3f2754af2ef6e74b0733cb863"
-    sha256 cellar: :any_skip_relocation, monterey:       "b1985364c98972f4246c6b582fedac8eb924f51a96f80545e18c5b7d8518c3e3"
-    sha256 cellar: :any_skip_relocation, big_sur:        "3ac407882b61f48535d3213adf549daa927c0aee00c9488ed9d28f57b24cfb29"
-    sha256 cellar: :any_skip_relocation, catalina:       "17b2af50c0f617fd1acabc5741ac33859f9627fc9ca8f7ae209db204f7f267bf"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "a9791ca5469ed779157ee86a7e037a792ed0216f07574b09b9340838244419bf"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "bd6829248ec4bd703088f405fa12c0362e0b6a63b7004a161d22b42f8df611eb"
+    sha256 cellar: :any_skip_relocation, monterey:       "27b30d37ecf0e2aac1654444d48b8678f1496bfdea51dff02dff2bb04db1d5b9"
+    sha256 cellar: :any_skip_relocation, big_sur:        "282995a9250d4df3d6b0aea36c67ad3ffb7ad300b92546b4e9db8ec8098f8314"
+    sha256 cellar: :any_skip_relocation, catalina:       "e66abbb8d38b8e2d9a75ff96f829364915f4ea3221e5ee04217d387da9682717"
   end
 
   depends_on "bash" => :build
   depends_on "python@3.10" => :build
   depends_on "yarn" => :build
-  depends_on "node@14"
+  depends_on "node@16"
 
   on_linux do
     depends_on "pkg-config" => :build
@@ -26,7 +26,7 @@ class CodeServer < Formula
   end
 
   def install
-    node = Formula["node@14"]
+    node = Formula["node@16"]
     system "yarn", "--production", "--frozen-lockfile"
     # @parcel/watcher bundles all binaries for other platforms & architectures
     # This deletes the non-matching architecture otherwise brew audit will complain.
@@ -49,7 +49,7 @@ class CodeServer < Formula
     keep_alive true
     error_log_path var/"log/code-server.log"
     log_path var/"log/code-server.log"
-    working_dir ENV["HOME"]
+    working_dir Dir.home
   end
 
   test do

@@ -1,18 +1,18 @@
 class Quantlib < Formula
   desc "Library for quantitative finance"
   homepage "https://www.quantlib.org/"
-  url "https://github.com/lballabio/QuantLib/releases/download/QuantLib-v1.25/QuantLib-1.25.tar.gz"
-  sha256 "0fbe8f621b837b6712d74102892a97a0f09e24a55a34dfc74f1e743a45d73d1d"
+  url "https://github.com/lballabio/QuantLib/releases/download/QuantLib-v1.26/QuantLib-1.26.tar.gz"
+  sha256 "04fe6cc1a3eb7776020093f550d4da89062586cc15d73e92babdf4505e3673e9"
   license "BSD-3-Clause"
   revision 1
 
   bottle do
-    sha256 cellar: :any,                 arm64_monterey: "bbead0dc54dcc9e65fcb9b07df7b99de5a283b724b49af3a10f1915a54837cc7"
-    sha256 cellar: :any,                 arm64_big_sur:  "4153ec68ee7db16e603d92c870983f6733e6c90353d2ab9f4d473417e1351406"
-    sha256 cellar: :any,                 monterey:       "e6120451ec188afc0fd50a71de125ae2e6b0858fd66bca2b39f3a6ef91090fee"
-    sha256 cellar: :any,                 big_sur:        "179ac883ba7f01c695bb5e77efbf3eca13a63bc7e40a827d81747382d00d092b"
-    sha256 cellar: :any,                 catalina:       "d8d24f3b576291bf5ceba3553897e5e5e71be85609c98cab5d5b31fa0827f622"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "aadf3b7fbd1be69b3a92fc67095e8570a596fc8f381fa2e611dbaeea82fb3583"
+    sha256 cellar: :any,                 arm64_monterey: "a08f452a0a811f68bd27b3d252c2672d220689c5217129033f7ba39486e9aa37"
+    sha256 cellar: :any,                 arm64_big_sur:  "798ffd2fa1f0242bcba454b48a2c47a17e8b5b73d1646053ef921a92a4798d46"
+    sha256 cellar: :any,                 monterey:       "04e8b78c7197abd6abd768f0458f66724132d34c23435e3de75721c175ba8acb"
+    sha256 cellar: :any,                 big_sur:        "c029ac861b197c0aaa785740ab5ecedc96795fc7d51cd00f4455701e16beda70"
+    sha256 cellar: :any,                 catalina:       "f3df1965445ffad03af80fae6729d5eabbb31d8e4085717cee751a42aa46d6e3"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "3473e5d2ad695ae650887aff91cab32c5937f0d533989d76c2a46ccd916ff4f5"
   end
 
   head do

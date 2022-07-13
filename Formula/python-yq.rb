@@ -3,17 +3,17 @@ class PythonYq < Formula
 
   desc "Command-line YAML and XML processor that wraps jq"
   homepage "https://kislyuk.github.io/yq/"
-  url "https://files.pythonhosted.org/packages/e4/df/9c2efc3c99c07a4bd09dfd763fc87d1e50db0ee3c67ad2ffe418f523ae4e/yq-2.14.0.tar.gz"
-  sha256 "f4bf2b299d1e5c7ebd74cfb25d1f5d9b6401063bac07a2d09a156144c1d644e1"
+  url "https://files.pythonhosted.org/packages/fc/0b/93a830fe6f75acaf2c052966b2c5f98aa3a18c08ca99b1621b60dd74e453/yq-3.0.2.tar.gz"
+  sha256 "e47ff2479a3746f90bdbb77f84e3ebdb789ce46a092b1c261ae5b1f5f914f8e8"
   license "Apache-2.0"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "33d8e2dd78a925be54583f177038622e73c61d4865f12881a0dbf9763f5b9016"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "2209df21ecb94211ed6a0a501e1e35cd62f984d7a0599025e60d546effbd2452"
-    sha256 cellar: :any_skip_relocation, monterey:       "e16ce617c783377de8a59958c9edec0cb7af20e81bc6f8f4495d903776b40840"
-    sha256 cellar: :any_skip_relocation, big_sur:        "d18cd15fb0c23cad1500576e7a7b6b11d1cc4007064a6391334dc6b045d907ec"
-    sha256 cellar: :any_skip_relocation, catalina:       "55c9c934585bca9ed5a1f2a9d35587d88d0a754dac9a1d526b6e029a27d2d147"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "c09bc813f8c97332f55d9a1e51d4e5a46958a5d9c8059e4fc585ca529d88908e"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "5c35399b698ad7bfa396283e5bbba732c92a9bf3b3ef2318725492b2faed806a"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "22959c8c896e3e9ec2fab51a3f93f4a34da8d0ff8117c8c1620264d2bffb2289"
+    sha256 cellar: :any_skip_relocation, monterey:       "c96d9dbf20bc4ac51d7b5098bb3dcfb8b801277c1c763d32ccecf03765412e04"
+    sha256 cellar: :any_skip_relocation, big_sur:        "fd0172b1e01cee07350d5470fb7bdafffaf6fdac28a44e7569bcf2a21e5027a9"
+    sha256 cellar: :any_skip_relocation, catalina:       "294354a91a83c14236afc950dcd5f2a46ab0ba0224a08513b57177ea7beda855"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "d116658979f0cec62acf579bb9e93177c90d8405019f063252c9b6642b5d3317"
   end
 
   depends_on "jq"
@@ -37,8 +37,8 @@ class PythonYq < Formula
   end
 
   resource "xmltodict" do
-    url "https://files.pythonhosted.org/packages/58/40/0d783e14112e064127063fbf5d1fe1351723e5dfe9d6daad346a305f6c49/xmltodict-0.12.0.tar.gz"
-    sha256 "50d8c638ed7ecb88d90561beedbf720c9b4e851a9fa6c47ebd64e99d166d8a21"
+    url "https://files.pythonhosted.org/packages/39/0d/40df5be1e684bbaecdb9d1e0e40d5d482465de6b00cbb92b84ee5d243c7f/xmltodict-0.13.0.tar.gz"
+    sha256 "341595a488e3e01a85a9d8911d8912fd922ede5fecc4dce437eb4b6c8d037e56"
   end
 
   def install

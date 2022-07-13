@@ -17,6 +17,9 @@ class LlvmAT7 < Formula
 
   keg_only :versioned_formula
 
+  # Deprecated in homebrew since 2022-05-29
+  disable! date: "2022-09-30", because: :versioned_formula
+
   # https://llvm.org/docs/GettingStarted.html#requirement
   depends_on "cmake" => :build
   depends_on xcode: :build

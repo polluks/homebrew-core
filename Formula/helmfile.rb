@@ -1,25 +1,25 @@
 class Helmfile < Formula
   desc "Deploy Kubernetes Helm Charts"
-  homepage "https://github.com/roboll/helmfile"
-  url "https://github.com/roboll/helmfile/archive/v0.144.0.tar.gz"
-  sha256 "fc767d10ec21ca464caaefd309f410d96685a985090c237907a22bd983112c62"
+  homepage "https://github.com/helmfile/helmfile"
+  url "https://github.com/helmfile/helmfile/archive/v0.145.2.tar.gz"
+  sha256 "8e472b1c65cd50b214d445dc37fa6b1ef97d4b374066b036a245a07fdf04473d"
   license "MIT"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "1590692c9f2abaa461d3efa8d48b72fe1fee5e1c652724b4f7ce4a5ab3616f35"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "19103ce6a9762ee2cd1a4543461d519c4037783bcb168466dff8be5391fbb896"
-    sha256 cellar: :any_skip_relocation, monterey:       "1ef56c0a9486b873d14eae8b0b0e66fba2d40b54e958d384afe2eb875b7efc8f"
-    sha256 cellar: :any_skip_relocation, big_sur:        "4571b0303c58fe93278a2fae1576146afecbf0dde9b384d598a565bb52d6a9a8"
-    sha256 cellar: :any_skip_relocation, catalina:       "9608ee96d6b2844a3bfa52219c56a73ff8eb4ca8ba13d242bf96f31225c12e07"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "2ae4fb50bea0ba92e62741ce5bd59c772ceecf69c5e75cb0be0dc0c2890c4c2a"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "c849f7b5ac58bfec46b3d7d4ae7e563d1bc3438936284a706013863ecf6a5c1a"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "88aea82c5de6c0b52e3435dd36ea626a2ea2e48a594076613a77d2d88218568a"
+    sha256 cellar: :any_skip_relocation, monterey:       "8fe0099d0269a14d69ae65ec117e271c2be70c1b2cef830f640b26de7f034cb6"
+    sha256 cellar: :any_skip_relocation, big_sur:        "488f8ff7cfe9e04188227d00420811cb8a27736b5776f6015fb155407e9f4f27"
+    sha256 cellar: :any_skip_relocation, catalina:       "18f9235b703949d978a61c7793ed26af72a5a50558521f8dc468122664dd6699"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "5c810f3faf3d0eaf82159872216775e51382b39436bd42d576d0516b0fd0fc24"
   end
 
   depends_on "go" => :build
   depends_on "helm"
 
   def install
-    system "go", "build", "-ldflags", "-X github.com/roboll/helmfile/pkg/app/version.Version=v#{version}",
-             "-o", bin/"helmfile", "-v", "github.com/roboll/helmfile"
+    system "go", "build", "-ldflags", "-X github.com/helmfile/helmfile/pkg/app/version.Version=v#{version}",
+             "-o", bin/"helmfile", "-v", "github.com/helmfile/helmfile"
   end
 
   test do

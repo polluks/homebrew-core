@@ -4,7 +4,7 @@ class Mapnik < Formula
   url "https://github.com/mapnik/mapnik/releases/download/v3.1.0/mapnik-v3.1.0.tar.bz2"
   sha256 "43d76182d2a975212b4ad11524c74e577576c11039fdab5286b828397d8e6261"
   license "LGPL-2.1-or-later"
-  revision 8
+  revision 10
   head "https://github.com/mapnik/mapnik.git", branch: "master"
 
   livecheck do
@@ -13,12 +13,12 @@ class Mapnik < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_monterey: "d674480b7e4e3947596fb6aa39ee0646876149a7fb09a6606b0189a3cd4cab5b"
-    sha256 cellar: :any,                 arm64_big_sur:  "95b63730f23c0c25d05026fd1bb899591a36c5bf66b1c399570126e5a7483417"
-    sha256 cellar: :any,                 monterey:       "208dbe0310b4ab92bf229f6ec91bec75968adce03941f52f0d237737f8ef3101"
-    sha256 cellar: :any,                 big_sur:        "35472048579ffd32d6891db4cf3204d83e60f2f991a493c64e804edf67b7a7b1"
-    sha256 cellar: :any,                 catalina:       "85c16f13492ccaccd895027e2c8ff2185fac734f8049d15d1cf557c4fd52fed4"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "dcb3b0dc4edac0a7ac653171585ed2d987fb5c7cfad75fd5ac42485ebef26bd3"
+    sha256 cellar: :any,                 arm64_monterey: "36fb7b653dc307abd2a2e651fce70a9cd26d654d5c5246e8897b9223af233ff5"
+    sha256 cellar: :any,                 arm64_big_sur:  "ce98179cc220bcb4ebd21e75070a51f51827a6cf57d1f3c9c352ab5e25c5142e"
+    sha256 cellar: :any,                 monterey:       "f396081ed525d2bdcdceca8ee2e97cd77147d38d2242f893140597e901e9f5ef"
+    sha256 cellar: :any,                 big_sur:        "28df77440d6afdd58b92bdb0724cc384154b43108ef2f403636693d989646736"
+    sha256 cellar: :any,                 catalina:       "3d6f7c0a733ae01a27bd7cdbaa000d677f1eba5d7ce94227a56eee8426065dbd"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "16b058888065c463e0a724b65fe2eb0f0d4746c86b6955bdfa145fe961913861"
   end
 
   depends_on "pkg-config" => :build

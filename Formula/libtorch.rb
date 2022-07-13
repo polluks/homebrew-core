@@ -4,8 +4,8 @@ class Libtorch < Formula
   desc "Tensors and dynamic neural networks"
   homepage "https://pytorch.org/"
   url "https://github.com/pytorch/pytorch.git",
-      tag:      "v1.11.0",
-      revision: "bc2c6edaf163b1a1330e37a6e34caf8c553e4755"
+      tag:      "v1.12.0",
+      revision: "67ece03c8cd632cce9523cd96efde6f2d1cc8121"
   license "BSD-3-Clause"
 
   livecheck do
@@ -14,22 +14,24 @@ class Libtorch < Formula
   end
 
   bottle do
-    rebuild 1
-    sha256 cellar: :any,                 arm64_monterey: "dc1fc8f4effb97499be315a119404cf5d0cdd25b0fec510567b42a86181d5ab6"
-    sha256 cellar: :any,                 arm64_big_sur:  "68e63b2242af7c6428e8ab47d390ef28425ac128fddec9508c54874308118b8b"
-    sha256 cellar: :any,                 monterey:       "d709083b53b72079ce3540d4d352d9d965a711eacc72a05ca4a1a0ba82275402"
-    sha256 cellar: :any,                 big_sur:        "dd5610a0aec0f081cf7e6caddd99038c4127dd35958899269ca4827cc647be16"
-    sha256 cellar: :any,                 catalina:       "838b03af23bd68b21b66f1764cd6a8e70ddc14fa81820124db67672460b79a5f"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "11aad0417538747f11d22289e50fa6feab91db7d4edfed385f5fcf5700b5f706"
+    sha256 cellar: :any,                 arm64_monterey: "14b0af153395f51676e3456c93164ef81783b313c8ad7f48c33d2a2eee7a616b"
+    sha256 cellar: :any,                 arm64_big_sur:  "f22bdf9510352e4e7dd3c04ef5e222fb4f7c0e7549a466d49b95ddd21a2aa3d2"
+    sha256 cellar: :any,                 monterey:       "cd34df0239caa9ab18d38d03b8bfc8307940ca08ad7c64b9d24ab7faa57626ff"
+    sha256 cellar: :any,                 big_sur:        "6a9acf979aed4807835b3aecafeb79c21dfc4c87633195a60d54c97a443015ec"
+    sha256 cellar: :any,                 catalina:       "1d48ac456215ccb7d313a0361a402a548b23517bd2789fa5bc5f7163a6ba5a05"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "9eea907df0432332419a17410c5f8c07c73c8d6ed9224175ce0bbc109a5454bd"
   end
 
   depends_on "cmake" => :build
   depends_on "python@3.10" => :build
   depends_on "eigen"
-  depends_on "libomp"
   depends_on "libyaml"
   depends_on "protobuf"
   depends_on "pybind11"
+
+  on_macos do
+    depends_on "libomp"
+  end
 
   resource "PyYAML" do
     url "https://files.pythonhosted.org/packages/36/2b/61d51a2c4f25ef062ae3f74576b01638bebad5e045f747ff12643df63844/PyYAML-6.0.tar.gz"
@@ -37,8 +39,8 @@ class Libtorch < Formula
   end
 
   resource "typing-extensions" do
-    url "https://files.pythonhosted.org/packages/b1/5a/8b5fbb891ef3f81fc923bf3cb4a578c0abf9471eb50ce0f51c74212182ab/typing_extensions-4.1.1.tar.gz"
-    sha256 "1a9462dcc3347a79b1f1c0271fbe79e844580bb598bafa1ed208b94da3cdcd42"
+    url "https://files.pythonhosted.org/packages/fe/71/1df93bd59163c8084d812d166c907639646e8aac72886d563851b966bf18/typing_extensions-4.2.0.tar.gz"
+    sha256 "f1c24655a0da0d1b67f07e17a5e6b2a105894e6824b92096378bb3668ef02376"
   end
 
   def install
@@ -53,7 +55,7 @@ class Libtorch < Formula
       -DUSE_METAL=OFF
       -DUSE_MKLDNN=OFF
       -DUSE_NNPACK=OFF
-      -DUSE_OPENMP=OFF
+      -DUSE_OPENMP=ON
       -DUSE_SYSTEM_EIGEN_INSTALL=ON
       -DUSE_SYSTEM_PYBIND11=ON
     ]

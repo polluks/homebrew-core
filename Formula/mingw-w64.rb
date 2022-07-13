@@ -4,6 +4,7 @@ class MingwW64 < Formula
   url "https://downloads.sourceforge.net/project/mingw-w64/mingw-w64/mingw-w64-release/mingw-w64-v10.0.0.tar.bz2"
   sha256 "ba6b430aed72c63a3768531f6a3ffc2b0fde2c57a3b251450dcf489a894f0894"
   license "ZPL-2.1"
+  revision 1
 
   livecheck do
     url :stable
@@ -11,12 +12,13 @@ class MingwW64 < Formula
   end
 
   bottle do
-    sha256 arm64_monterey: "0be206b11225c8c065512f0fcb51dcbe5945105e5e491ddc17a4a4a71487e97b"
-    sha256 arm64_big_sur:  "68973da0ff787d7c8407e1d827bd1b971dbcfb8ee515c34de7a321c4c7b9fc24"
-    sha256 monterey:       "cb42c44f41f86e02ecf279a13f4198e1d595348285e9df7fac94a89aefcef4dd"
-    sha256 big_sur:        "cfbf6fd1f20dade260a11b9f8bdfa3b84787ff530e86e60b8c00093ef079cff8"
-    sha256 catalina:       "1d45a53a6265dac0f260f0101eda61d8d739dbe4ebea42ba6dccdb5858b9bc8b"
-    sha256 x86_64_linux:   "4242ffa31a4a86f7e9d204c07d4dd32599aef03bac4e8e0d8a2290727178f179"
+    rebuild 1
+    sha256 arm64_monterey: "83ac80b88fcf2d47b786d457648bb3f1f1002deb9ff71b1f5f884de8e1c0b392"
+    sha256 arm64_big_sur:  "857aecb324bf425ca3ef2bcfd462a4909df2f6d5152feb69bf86c1371234fbb9"
+    sha256 monterey:       "40976416e23d81cd33649fb1dbb5582d359effee42005f66a7b99bc97019a86d"
+    sha256 big_sur:        "0a6af7c3ce1f1d37a09a0b7e9e526d32a15d4817ee9ca9feab9ad2ce5d8a83d4"
+    sha256 catalina:       "cede2bfb5f915da57afb35cccc4fdfb89fcdec572a16714ef6bdc7a8383d395e"
+    sha256 x86_64_linux:   "e5e8544cc80513ebd44ebbed9207d10bf0419d8ca91f264fea85edaf6b4534aa"
   end
 
   # Apple's makeinfo is old and has bugs
@@ -41,18 +43,9 @@ class MingwW64 < Formula
   end
 
   resource "gcc" do
-    url "https://ftp.gnu.org/gnu/gcc/gcc-11.2.0/gcc-11.2.0.tar.xz"
-    mirror "https://ftpmirror.gnu.org/gcc/gcc-11.2.0/gcc-11.2.0.tar.xz"
-    sha256 "d08edc536b54c372a1010ff6619dd274c0f1603aa49212ba20f7aa2cda36fa8b"
-
-    # Remove when upstream has Apple Silicon support
-    if Hardware::CPU.arm?
-      patch do
-        # patch from gcc-11.1.0-arm branch
-        url "https://github.com/fxcoudert/gcc/commit/eea3046c5fa62d4dee47e074c7a758570d9da61c.patch?full_index=1"
-        sha256 "b55ca05a0ed32f69f63bbe708568df5ad62d938da0e34b515d601bb966d32d40"
-      end
-    end
+    url "https://ftp.gnu.org/gnu/gcc/gcc-12.1.0/gcc-12.1.0.tar.xz"
+    mirror "https://ftpmirror.gnu.org/gcc/gcc-12.1.0/gcc-12.1.0.tar.xz"
+    sha256 "62fd634889f31c02b64af2c468f064b47ad1ca78411c45abe6ac4b5f8dd19c7b"
   end
 
   def target_archs

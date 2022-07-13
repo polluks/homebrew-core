@@ -1,9 +1,10 @@
 class Kore < Formula
   desc "Web application framework for writing web APIs in C"
   homepage "https://kore.io/"
-  url "https://kore.io/releases/kore-4.2.1.tar.gz"
-  sha256 "f76b108a4eefa27c89123f5d6a36b493b171e429be7a85d3dd1466ac87e7f15a"
+  url "https://kore.io/releases/kore-4.2.2.tar.gz"
+  sha256 "77c12d80bb76fe774b16996e6bac6d4ad950070d0816c3409dc0397dfc62725f"
   license "ISC"
+  revision 2
   head "https://github.com/jorisvink/kore.git", branch: "master"
 
   livecheck do
@@ -12,12 +13,12 @@ class Kore < Formula
   end
 
   bottle do
-    sha256 arm64_monterey: "d699c224f9e13a1d5bc20e0f6e98d469e8b7a8036ed28a1459972fea323a666a"
-    sha256 arm64_big_sur:  "78fb0e516c43a86d7084dd68cf9bf0ff858df862c8ae5927bab95cf857a26665"
-    sha256 monterey:       "f26a487e086bd7d73eab1e81795848e2b9695c776df35042e19e979f4ff85e6d"
-    sha256 big_sur:        "a7bc39e7560ba3b56ade55247251b23050521a0d8e7d2c55944426ea0aa644e8"
-    sha256 catalina:       "2cfb4d82a30a171a4778ac07cf8c0e94a3dd1004960ba17fd76935f661e298d0"
-    sha256 x86_64_linux:   "2c9c5cec0e9edda2e8f7e03a4ba735eba206280f6d19f2b2d7ba896000637e07"
+    sha256 arm64_monterey: "8a476b2e8a6f1876a3bb0f930b2ee67f440d2fc442dc99e98ee00b9535901b79"
+    sha256 arm64_big_sur:  "ebfe4e5da5636545f185e1535ee205389e1b71efc97242565470f72da11f4ac0"
+    sha256 monterey:       "ba1b874c9e8d25e1365258664b2e2f8355a587c755a737c84878b98013cb7ce4"
+    sha256 big_sur:        "99770a896f403b2f61ca845bc8fcbbb6ea625c62358802d2ab326a5d2f6af67e"
+    sha256 catalina:       "ef8323a13116686ae46c44f74f6dfb23a62b168681dc6913b2649fb4f2f96460"
+    sha256 x86_64_linux:   "a7be618efc5377bc7b4c5214466e016049273a1f5dcc4ae3d5db820f935f32df"
   end
 
   depends_on "pkg-config" => :build
@@ -27,6 +28,10 @@ class Kore < Formula
   def install
     ENV.deparallelize { system "make", "PREFIX=#{prefix}", "TASKS=1" }
     system "make", "install", "PREFIX=#{prefix}"
+
+    # Remove openssl cellar references, which breaks kore on openssl updates
+    openssl = Formula["openssl@1.1"]
+    inreplace [pkgshare/"features", pkgshare/"linker"], openssl.prefix.realpath, openssl.opt_prefix if OS.mac?
   end
 
   test do

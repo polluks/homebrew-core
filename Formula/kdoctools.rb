@@ -1,8 +1,8 @@
 class Kdoctools < Formula
   desc "Create documentation from DocBook"
   homepage "https://api.kde.org/frameworks/kdoctools/html/index.html"
-  url "https://download.kde.org/stable/frameworks/5.93/kdoctools-5.93.0.tar.xz"
-  sha256 "25e83ff151c53667b94e25a5c41993796164683a43913820a5651f3610b65d5c"
+  url "https://download.kde.org/stable/frameworks/5.96/kdoctools-5.96.0.tar.xz"
+  sha256 "0b8101ee828fd5127bf213d740838e093a4d7b054407400041c9d9bada41d312"
   license all_of: [
     "BSD-3-Clause",
     "GPL-2.0-or-later",
@@ -19,29 +19,36 @@ class Kdoctools < Formula
   end
 
   bottle do
-    sha256 cellar: :any, arm64_monterey: "40464918fa7ba0e4360fafc9277a1b491bf182e988f2b58146dbd77acdc81cd3"
-    sha256 cellar: :any, arm64_big_sur:  "0b4b36729782625015a78720f9a47be27222ca60139bbcc5e2431f6fa47f6cb4"
-    sha256 cellar: :any, monterey:       "92cb1b8caef89fa8f85711e7d18bdef1ffee82cff2c959e088737f86fc44c516"
-    sha256 cellar: :any, big_sur:        "1474492a0b7b35abbf8bda083384f45b4e28f035086e2c72dcafb9b464af1d43"
-    sha256 cellar: :any, catalina:       "2a51b98cf4f186bcd6edee78ef5cf9b86adb4c33bae132bc1dd8ddbbca871dea"
+    sha256 cellar: :any,                 arm64_monterey: "5a601f32bffe4dc8e216a93dd2f2b861e4b663770fc9868bf62a83d611d91143"
+    sha256 cellar: :any,                 arm64_big_sur:  "155b77b3477dd88469faa9bf40b46216a97b7995ed914f9cf0ae896a961994e1"
+    sha256 cellar: :any,                 monterey:       "def28a011b015afae3dc352fa8f48fb58eea76822bea22de7b47fa328773319b"
+    sha256 cellar: :any,                 big_sur:        "17dab58fd1c185c2bb201d305e1f395a5e1dfd1d7f173d958fb0a186ca21e4d9"
+    sha256 cellar: :any,                 catalina:       "936ca4a58e5cc12ff1ea0ae2d6ebaacd57902e40a5b07e248dc36bfa8dd54119"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "a24f2f3cd23d1e603b1905372ac8158db06267cb0b011ab60b0e21e0a0357ee3"
   end
 
   depends_on "cmake" => [:build, :test]
-  depends_on "docbook-xsl" => [:build, :test]
   depends_on "doxygen" => :build
   depends_on "extra-cmake-modules" => [:build, :test]
   depends_on "gettext" => :build
   depends_on "ki18n" => :build
 
+  depends_on "docbook-xsl"
   depends_on "karchive"
 
   uses_from_macos "libxml2"
   uses_from_macos "libxslt"
   uses_from_macos "perl"
 
+  on_linux do
+    depends_on "gcc"
+  end
+
+  fails_with gcc: "5"
+
   resource "URI::Escape" do
-    url "https://cpan.metacpan.org/authors/id/O/OA/OALDERS/URI-5.09.tar.gz"
-    sha256 "03e63ada499d2645c435a57551f041f3943970492baa3b3338246dab6f1fae0a"
+    url "https://cpan.metacpan.org/authors/id/O/OA/OALDERS/URI-5.11.tar.gz"
+    sha256 "d3b62a69a6ab288021167d428ac4673c399d42e4de69eb49c7953a30821843c9"
   end
 
   def install

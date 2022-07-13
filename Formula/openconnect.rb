@@ -1,10 +1,11 @@
 class Openconnect < Formula
   desc "Open client for Cisco AnyConnect VPN"
   homepage "https://www.infradead.org/openconnect/"
-  url "ftp://ftp.infradead.org/pub/openconnect/openconnect-8.20.tar.gz"
-  mirror "https://fossies.org/linux/privat/openconnect-8.20.tar.gz"
-  sha256 "c1452384c6f796baee45d4e919ae1bfc281d6c88862e1f646a2cc513fc44e58b"
+  url "ftp://ftp.infradead.org/pub/openconnect/openconnect-9.01.tar.gz"
+  mirror "https://fossies.org/linux/privat/openconnect-9.01.tar.gz"
+  sha256 "b3d7faf830e9793299d6a41e81d84cd4a3e2789c148c9e598e4585010090e4c7"
   license "LGPL-2.1-only"
+  revision 2
 
   livecheck do
     url "https://www.infradead.org/openconnect/download.html"
@@ -12,12 +13,12 @@ class Openconnect < Formula
   end
 
   bottle do
-    sha256 arm64_monterey: "4e08fdd7f2b814a88445ed088151cd056022521b15c37fc40b018440d282113d"
-    sha256 arm64_big_sur:  "414f228ce4ac24b4c0283c6ada6ecfff43d320155baccdb2912490949e802575"
-    sha256 monterey:       "273c02a215e4f2c73316367a7e8a71432d73718ae7bbdffbfded58f178f09c3e"
-    sha256 big_sur:        "738d8d35421582bbf406f51db429e211012b79290a567341340562f776389e2e"
-    sha256 catalina:       "4ca4203a7464c7735821a25ddd40816e374167e5ac8cbbae9c16fa31a09f5228"
-    sha256 x86_64_linux:   "9a9bcf3569d6680d3c5d976fc1b77b2400ada7bdd8fc87a1905e338940403a8a"
+    sha256 arm64_monterey: "6dc4bcb064f2682ec83df05e98ebdc4c01bb393311ecc4d60f70574ac5dc6091"
+    sha256 arm64_big_sur:  "2eeb96ab48ce2e23288d738575415a9cca7356d2ef82f6dbe5c076ba85242422"
+    sha256 monterey:       "a5cada9bca9cc64b03ee450d06d4064edc2a55896c4b5518b558aaa68ea86b04"
+    sha256 big_sur:        "cdcbb4640fee08eb17685920cc0af6d5c74989296d222c6f21c6b51a49f319bf"
+    sha256 catalina:       "4653dc9700dc255351900b68baa48c3da01eabe5b83a42384744f825bd4a13a3"
+    sha256 x86_64_linux:   "2f6ef9a3246f5bb6e134c50e68d45c9515b7d5529be624dcfb9b4b261b6a5e4b"
   end
 
   head do
@@ -34,13 +35,13 @@ class Openconnect < Formula
   depends_on "stoken"
 
   resource "vpnc-script" do
-    url "https://gitlab.com/openconnect/vpnc-scripts/raw/cda38498bee5e21cb786f2c9e78ecab251c997c3/vpnc-script"
-    sha256 "f17be5483ee048973af5869ced7b080f824aff013bb6e7a02e293d5cd9dff3b8"
+    url "https://gitlab.com/openconnect/vpnc-scripts/raw/e52f8e66391c4c55ee818841d236ebbb6ae284ed/vpnc-script"
+    sha256 "6d95e3625cceb51e77628196055adb58c3e8325b9f66fcc8e97269caf42b8575"
   end
 
   def install
-    etc.install resource("vpnc-script")
-    chmod 0755, "#{etc}/vpnc-script"
+    (etc/"vpnc").install resource("vpnc-script")
+    chmod 0755, etc/"vpnc/vpnc-script"
 
     if build.head?
       ENV["LIBTOOLIZE"] = "glibtoolize"
@@ -51,14 +52,31 @@ class Openconnect < Formula
       --prefix=#{prefix}
       --sbindir=#{bin}
       --localstatedir=#{var}
-      --with-vpnc-script=#{etc}/vpnc-script
+      --with-vpnc-script=#{etc}/vpnc/vpnc-script
     ]
 
     system "./configure", *args
     system "make", "install"
   end
 
+  def caveats
+    s = <<~EOS
+      A `vpnc-script` has been installed at #{etc}/vpnc/vpnc-script.
+    EOS
+
+    s += if (etc/"vpnc/vpnc-script.default").exist?
+      <<~EOS
+
+        To avoid destroying any local changes you have made, a newer version of this script has
+        been installed as `vpnc-script.default`.
+      EOS
+    end.to_s
+
+    s
+  end
+
   test do
-    assert_match "POST https://localhost/", pipe_output("#{bin}/openconnect localhost 2>&1")
+    # We need to pipe an empty string to `openconnect` for this test to work.
+    assert_match "POST https://localhost/", pipe_output("#{bin}/openconnect localhost 2>&1", "")
   end
 end

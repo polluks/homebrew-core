@@ -4,9 +4,10 @@ class Mavsdk < Formula
   desc "API and library for MAVLink compatible systems written in C++17"
   homepage "https://mavsdk.mavlink.io"
   url "https://github.com/mavlink/MAVSDK.git",
-      tag:      "v1.3.0",
-      revision: "dd039ac29cd06fd02bb3ea53868e54c87d6a756e"
+      tag:      "v1.4.3",
+      revision: "2d2d85c60123c7d071b1bf50354fc6c06c12115b"
   license "BSD-3-Clause"
+  revision 1
 
   livecheck do
     url :stable
@@ -14,12 +15,12 @@ class Mavsdk < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_monterey: "7f294f1141c923e4e0899fc87ef212acc2d7ad632eefc8901a5ddf3df07dd97c"
-    sha256 cellar: :any,                 arm64_big_sur:  "c22a70e2305d6fea50a5ccce507dac91d4eea163caa53687914b42241eab2775"
-    sha256 cellar: :any,                 monterey:       "c40ae54fbd8b3700800756167cbac4aeac99d6cd97fc2b11de20ebae380a0e5e"
-    sha256 cellar: :any,                 big_sur:        "17bda4b0fc7b2c6222ca0cadcf961f05f19faacb8cc30137c6db09976e6f63c5"
-    sha256 cellar: :any,                 catalina:       "b4b035df2b5d1304d132a5c31ea627c51554261f21f026797e5b8cb82b0cc2f9"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "a386b59a90aefbcb94f87d93a4f15e7ab085f6014a5b0e545f5a953fa657dffe"
+    sha256 cellar: :any,                 arm64_monterey: "0af6b95cbcdb86572fa39c5f5c2c4f4bf97ad2189c218e0ef706d13796ba13f8"
+    sha256 cellar: :any,                 arm64_big_sur:  "85945afd4d8fd569b2d5b493e2095b15379fd94fc5d0b475f0bd0716a670051e"
+    sha256 cellar: :any,                 monterey:       "533c8c7eeb042ab1b78696b9e034d31062a319e9cd8363c2a782b28c76f42277"
+    sha256 cellar: :any,                 big_sur:        "e26e1fdce5c73e9b64c145808069932406f32402f12e239de3386d39a90ad20a"
+    sha256 cellar: :any,                 catalina:       "4dc8552a887f73f69789eb4d97bcee296962026268500e67bef58ddd23abe67b"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "0e7f934d1bad357c35775f999af3d59ad42dfe290652c4c03267a24c619a38b3"
   end
 
   depends_on "cmake" => :build
@@ -58,9 +59,14 @@ class Mavsdk < Formula
   # To update the resources, use homebrew-pypi-poet on the PyPI package `protoc-gen-mavsdk`.
   # These resources are needed to install protoc-gen-mavsdk, which we use to regenerate protobuf headers.
   # This is needed when brewed protobuf is newer than upstream's vendored protobuf.
+  resource "future" do
+    url "https://files.pythonhosted.org/packages/45/0b/38b06fd9b92dc2b68d58b75f900e97884c45bedd2ff83203d933cf5851c9/future-0.18.2.tar.gz"
+    sha256 "b1bead90b70cf6ec3f0710ae53a525360fa360d306a86583adc6bf83a4db537d"
+  end
+
   resource "Jinja2" do
-    url "https://files.pythonhosted.org/packages/89/e3/b36266381ae7a1310a653bb85f4f3658c462a69634fa9b2fef76252a50ed/Jinja2-3.1.1.tar.gz"
-    sha256 "640bed4bb501cbd17194b3cace1dc2126f5b619cf068a726b98192a0fde74ae9"
+    url "https://files.pythonhosted.org/packages/7a/ff/75c28576a1d900e87eb6335b063fab47a8ef3c8b4d88524c4bf78f670cce/Jinja2-3.1.2.tar.gz"
+    sha256 "31351a702a408a9e7595a8fc6150fc3f43bb6bf7e319770cbc0db9df9437e852"
   end
 
   resource "MarkupSafe" do
@@ -88,19 +94,19 @@ class Mavsdk < Formula
       PATH:        "#{venv_dir}/bin:#{ENV["PATH"]}",
     ) do
       system "tools/generate_from_protos.sh"
-    end
 
-    # Source build adapted from
-    # https://mavsdk.mavlink.io/develop/en/contributing/build.html
-    system "cmake", *std_cmake_args,
-                    "-Bbuild/default",
-                    "-DSUPERBUILD=OFF",
-                    "-DBUILD_SHARED_LIBS=ON",
-                    "-DBUILD_MAVSDK_SERVER=ON",
-                    "-DBUILD_TESTS=OFF",
-                    "-DVERSION_STR=v#{version}-#{tap.user}",
-                    "-DCMAKE_INSTALL_RPATH=#{rpath}",
-                    "-H."
+      # Source build adapted from
+      # https://mavsdk.mavlink.io/develop/en/contributing/build.html
+      system "cmake", *std_cmake_args,
+                      "-Bbuild/default",
+                      "-DSUPERBUILD=OFF",
+                      "-DBUILD_SHARED_LIBS=ON",
+                      "-DBUILD_MAVSDK_SERVER=ON",
+                      "-DBUILD_TESTS=OFF",
+                      "-DVERSION_STR=v#{version}-#{tap.user}",
+                      "-DCMAKE_INSTALL_RPATH=#{rpath}",
+                      "-H."
+    end
     system "cmake", "--build", "build/default"
     system "cmake", "--build", "build/default", "--target", "install"
   end

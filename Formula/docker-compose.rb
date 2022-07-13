@@ -1,18 +1,18 @@
 class DockerCompose < Formula
   desc "Isolated development environments using Docker"
   homepage "https://docs.docker.com/compose/"
-  url "https://github.com/docker/compose/archive/v2.4.1.tar.gz"
-  sha256 "ebf56ab2f3912d49f4ef9a0e48b219cf9cbff958d20990a5ff9b7a8ced8e69fc"
+  url "https://github.com/docker/compose/archive/v2.6.1.tar.gz"
+  sha256 "7d4ad5354e382809368016210b33c4f6c3bca68da15e36edc671da00fb234666"
   license "Apache-2.0"
   head "https://github.com/docker/compose.git", branch: "v2"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "5162554bb66b87a19adfaa75e28f55ad82abc65c433d5331fb67601a5c168bf5"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "5162554bb66b87a19adfaa75e28f55ad82abc65c433d5331fb67601a5c168bf5"
-    sha256 cellar: :any_skip_relocation, monterey:       "172c802647a2ee7c63402cdf25a0c002f68c73db91c1ce61a51e3fdae91e2ba8"
-    sha256 cellar: :any_skip_relocation, big_sur:        "172c802647a2ee7c63402cdf25a0c002f68c73db91c1ce61a51e3fdae91e2ba8"
-    sha256 cellar: :any_skip_relocation, catalina:       "172c802647a2ee7c63402cdf25a0c002f68c73db91c1ce61a51e3fdae91e2ba8"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "e5ddf6cf3b89be0ec4e722a11d7a95ab119f247213cb116c56a1e055e51a8f40"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "4e052ab367d89418271adea2f79fba6787c3e8529ad39e015206e48cafa88bda"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "4e052ab367d89418271adea2f79fba6787c3e8529ad39e015206e48cafa88bda"
+    sha256 cellar: :any_skip_relocation, monterey:       "9c319d5de5b569102ce52b2327b009c2b2659677a98144f2e48c80f098f95650"
+    sha256 cellar: :any_skip_relocation, big_sur:        "9c319d5de5b569102ce52b2327b009c2b2659677a98144f2e48c80f098f95650"
+    sha256 cellar: :any_skip_relocation, catalina:       "9c319d5de5b569102ce52b2327b009c2b2659677a98144f2e48c80f098f95650"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "cee3bf79a19a909a6844a4827b77520fa08039a77f4240876d8b9676633c214b"
   end
 
   depends_on "go" => :build

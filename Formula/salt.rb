@@ -3,18 +3,18 @@ class Salt < Formula
 
   desc "Dynamic infrastructure communication bus"
   homepage "https://saltproject.io/"
-  url "https://files.pythonhosted.org/packages/2f/31/73c98765b59608fe6742824af31f2037ef1490e46a95873a07a34b596f15/salt-3004.1.tar.gz"
-  sha256 "7f344a2432648a4f078daa5accc68dcdffe1095cea13ec21e50413560f04c298"
+  url "https://files.pythonhosted.org/packages/78/47/0acfc5d43fcf4b01c3f650ce884525dd2330b8827364e4509819f7e925d3/salt-3004.2.tar.gz"
+  sha256 "2fa644f6200d4e36b55846cb372b6e67b6ca0fbec0697f1d8d73e771b665ed70"
   license "Apache-2.0"
   head "https://github.com/saltstack/salt.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any,                 arm64_monterey: "1cf142587a948c911305114ca0633095d6b1b81d38c97e8840730703ed01a062"
-    sha256 cellar: :any,                 arm64_big_sur:  "595732b56115d4eaeddbfd07d1d814f778df505a43a200abcc7ca261a6e661f3"
-    sha256 cellar: :any,                 monterey:       "5fbe60ea0082b27b025d94d2202ab04aba4e4f87056a1b9d1ceab099b593d554"
-    sha256 cellar: :any,                 big_sur:        "d4bb0c3eb294cea20d41e8d182d776048be46fc57490dac93aaf624eba001b99"
-    sha256 cellar: :any,                 catalina:       "1759f92a809c2163c817318624599d091c17cb5ea3dfa670dfc989c331a2b4e8"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "06e6194761f4e0319f0119df0bd6d5416b4860f2fcb00a6637876f2c75c64060"
+    sha256 cellar: :any,                 arm64_monterey: "402c18aec244d92e08a50df9fff589fd2943fa4a8d9612bec46c8e1eadb12962"
+    sha256 cellar: :any,                 arm64_big_sur:  "3d8449c00e1c26253a9fbcc74c99f3bd66abac18d0316c44df1a64320d5516e4"
+    sha256 cellar: :any,                 monterey:       "5cd0d18dd7f99aa4ebe8e09f2cecee917d44bb70318bf8052c6be72b90ef2117"
+    sha256 cellar: :any,                 big_sur:        "5ba113a60fec9b8d0a1f5b6bdc8c055b7a48bef0d33797bdd291eeeec4113a61"
+    sha256 cellar: :any,                 catalina:       "22e343866a7a381ae6c3035a90eb5b46c82635799e11d3ae43b00455585e0e49"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "f71c69c231d6e8f5416158e3f15f8ecf20c7689d80cc432ca37d24acee3c0f98"
   end
 
   depends_on "swig" => :build
@@ -174,8 +174,8 @@ class Salt < Formula
   end
 
   resource "pycryptodome" do
-    url "https://files.pythonhosted.org/packages/32/09/41ea2633fea5b973dac9829de871b417ff3ce2963d07fd92e3f2d2a9ee9b/pycryptodome-3.14.1.tar.gz"
-    sha256 "e04e40a7f8c1669195536a37979dd87da2c32dbdc73d6fe35f0077b0c17c803b"
+    url "https://files.pythonhosted.org/packages/11/e4/a8e8056a59c39f8c9ddd11d3bc3e1a67493abe746df727e531f66ecede9e/pycryptodome-3.15.0.tar.gz"
+    sha256 "9135dddad504592bcc18b0d2d95ce86c3a5ea87ec6447ef25cfedea12d6018b8"
   end
 
   resource "pycryptodomex" do
@@ -184,8 +184,8 @@ class Salt < Formula
   end
 
   resource "pygit2" do
-    url "https://files.pythonhosted.org/packages/ef/24/2c63bfe5144dd89ec54e978ac6557640caf44ec61dc46999ca7ddc648c28/pygit2-1.9.1.tar.gz"
-    sha256 "ef6479c3b6192825316b056336db77ebff6e7849aeb1fbb88b76001ac337b9c9"
+    url "https://files.pythonhosted.org/packages/15/69/95baec94618352fad36a5c53ed1a7a96f7de96d2b36c5ac3fc2a5017b78a/pygit2-1.9.2.tar.gz"
+    sha256 "20894433df1146481aacae37e2b0f3bbbfdea026db2f55061170bd9823e40b19"
   end
 
   resource "pyOpenSSL" do
@@ -251,12 +251,6 @@ class Salt < Formula
   resource "zc.lockfile" do
     url "https://files.pythonhosted.org/packages/11/98/f21922d501ab29d62665e7460c94f5ed485fd9d8348c126697947643a881/zc.lockfile-2.0.tar.gz"
     sha256 "307ad78227e48be260e64896ec8886edc7eae22d8ec53e4d528ab5537a83203b"
-  end
-
-  # Fix python 3.10 compatibility, remove when https://github.com/saltstack/salt/pull/61064 is in a release
-  patch do
-    url "https://github.com/saltstack/salt/commit/a273fffc857145198f25ba269f7e2493112e55fc.patch?full_index=1"
-    sha256 "7f1d781846f684e25308ecaad601b0aa7ac563a78b6e2d83ff476d6f23849d1c"
   end
 
   def install

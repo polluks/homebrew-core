@@ -1,8 +1,8 @@
 class Suricata < Formula
   desc "Network IDS, IPS, and security monitoring engine"
   homepage "https://suricata.io"
-  url "https://www.openinfosecfoundation.org/download/suricata-6.0.4.tar.gz"
-  sha256 "a8f197e33d1678689ebbf7bc1abe84934c465d22c504c47c2c7e9b74aa042d0d"
+  url "https://www.openinfosecfoundation.org/download/suricata-6.0.6.tar.gz"
+  sha256 "00173634fa76aee636e38a90b1c02616c903e42173107d47b4114960b5fbe839"
   license "GPL-2.0-only"
 
   livecheck do
@@ -11,12 +11,12 @@ class Suricata < Formula
   end
 
   bottle do
-    sha256 arm64_monterey: "ba6f04da9dbc52d5c4ba3bd4441a498648191f43144fbcce4e2e79bb79eb04c9"
-    sha256 arm64_big_sur:  "e222dd787408ebc39be3189d74fff39ae3be004fa1395b66c6900e45076eab72"
-    sha256 monterey:       "222252c72f9f6be9393618fdbd2b83dd1e2deefbc9c0f2babea219cc4158747c"
-    sha256 big_sur:        "a59ee562882071a98eba9116e1175787cd57749bbf21fdece37098048de0f24a"
-    sha256 catalina:       "aca8a07601138f8a12b9b378ff20bed7471e5413416555f2bf8439f2817f356f"
-    sha256 x86_64_linux:   "27222b9a2b55c48251ed492bae1ae573dab98a92593b6555dc58bb62e0ae1221"
+    sha256 arm64_monterey: "bb2595de1c9cb6e2844c368edb5d33e9b8794fc5ac98ac08ff4fb0346e50e812"
+    sha256 arm64_big_sur:  "3120134a41f3b40661601c6d7d8a2979e59a67fff4a55dd12e09e760d5facba0"
+    sha256 monterey:       "101bed9879dec18a6dbcd1f4017f98b56aade302e58dfc1b5569e168bb2474ac"
+    sha256 big_sur:        "d1837502a422205904afafea0a3001fb6dc41031272c1d203b7d7db737325919"
+    sha256 catalina:       "cae10715c28a6efeb7597428c59c577bb24967f05da58ec313d604ecb8c23b1e"
+    sha256 x86_64_linux:   "ea9ece149754a206fd1de53d3944329306d73504bc57f7b14860f9a4622edb1e"
   end
 
   depends_on "pkg-config" => :build
@@ -39,8 +39,8 @@ class Suricata < Formula
   end
 
   resource "PyYAML" do
-    url "https://files.pythonhosted.org/packages/a0/a4/d63f2d7597e1a4b55aa3b4d6c5b029991d3b824b5bd331af8d4ab1ed687d/PyYAML-5.4.1.tar.gz"
-    sha256 "607774cbba28732bfa802b54baa7484215f530991055bb562efbed5b2f20a45e"
+    url "https://files.pythonhosted.org/packages/36/2b/61d51a2c4f25ef062ae3f74576b01638bebad5e045f747ff12643df63844/PyYAML-6.0.tar.gz"
+    sha256 "68fb519c14306fec9720a2a5b45bc9f0c8d1b9c72adf45c37baedfcd949c35a2"
   end
 
   resource "simplejson" do

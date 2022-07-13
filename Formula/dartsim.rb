@@ -4,12 +4,15 @@ class Dartsim < Formula
   url "https://github.com/dartsim/dart/archive/v6.12.1.tar.gz"
   sha256 "e0d47bbc191903b93474da00bbd1042cefdc85f5ead3e9a9282b5f4187d53304"
   license "BSD-2-Clause"
-  revision 1
+  revision 4
 
   bottle do
-    sha256 arm64_big_sur: "1bc446fac248f2d6c50390a95a3f7ca7d548d30d9b06b88bc823d19b5b711951"
-    sha256 big_sur:       "781f8d46a3ef49ab988866f1c78e3951f000179d069d98ec0f5acfc9b0db6f86"
-    sha256 catalina:      "be093be8d933db91d12cf0c5acecc32fd7e2e76f840587b491cd16ee5989a992"
+    sha256                               arm64_monterey: "4245d78eb8ab8d1cb9076aea319b2abbaf5ec281beeb29dcce97c7b275ace9a4"
+    sha256                               arm64_big_sur:  "b49272a8d5e6ff5d4c0fcf1bb093bb7f0f54d30e4d25ee318ef1197b24c4ff76"
+    sha256                               monterey:       "0f9e46a30937b313b1417838c55d6bb316851184cc3522ffd24fa11d423f703f"
+    sha256                               big_sur:        "7f09cd46fec546f218154533070b9ea3028dff5d19d830a1518fa9a93286360d"
+    sha256                               catalina:       "f67f712e843a6cfb7a3c4b77d91c8c16f9988e1a155e3d6493635934ed76f195"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "aa25072ff1e7da1807a4861360fde7a69ebd08843b2862fd17dcd238fbf99f80"
   end
 
   depends_on "cmake" => :build
@@ -27,6 +30,12 @@ class Dartsim < Formula
   depends_on "open-scene-graph"
   depends_on "tinyxml2"
   depends_on "urdfdom"
+
+  on_linux do
+    depends_on "gcc"
+  end
+
+  fails_with gcc: "5"
 
   def install
     ENV.cxx11
@@ -60,6 +69,8 @@ class Dartsim < Formula
                     "-I#{include}", "-L#{lib}", "-ldart",
                     "-L#{Formula["assimp"].opt_lib}", "-lassimp",
                     "-L#{Formula["boost"].opt_lib}", "-lboost_system",
+                    "-L#{Formula["libccd"].opt_lib}", "-lccd",
+                    "-L#{Formula["fcl"].opt_lib}", "-lfcl",
                     "-std=c++14", "-o", "test"
     system "./test"
   end

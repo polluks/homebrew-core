@@ -1,8 +1,8 @@
 class Oil < Formula
   desc "Bash-compatible Unix shell with more consistent syntax and semantics"
   homepage "https://www.oilshell.org/"
-  url "https://www.oilshell.org/download/oil-0.9.9.tar.gz"
-  sha256 "e10b6de6da4bda27a012e0b5750a9bee8c7576bd0d75ec13385e1fcf01febafa"
+  url "https://www.oilshell.org/download/oil-0.11.0.tar.gz"
+  sha256 "209ad011736585f85723672ab8f8ecac73f325015eef04eb66ec3b9989dd4ef4"
   license "Apache-2.0"
 
   livecheck do
@@ -11,12 +11,12 @@ class Oil < Formula
   end
 
   bottle do
-    sha256 arm64_monterey: "a962b09107812fd470005454b80b4af0c5613cd076c30ce00fa4c0ed2d0b46dc"
-    sha256 arm64_big_sur:  "9f36c0aa68dc103527a4013d3aa0f42738944af1bb5359e2902bbbdde401aaab"
-    sha256 monterey:       "bdb43f10a5d2ba236374858cb0015d6ca9cff60afeeca62b7e55909955cfac1d"
-    sha256 big_sur:        "ff7553cfea482c281cc2d9bf5622da03d1331e388577f69c0360add3611c4b62"
-    sha256 catalina:       "74888b5412e87a771e8884c8fb71ca65d3978543a24e27a6e38fd4070fa81b67"
-    sha256 x86_64_linux:   "81aa6313f8a38d3d79baed195673703abd615ef3c18fa8e5e7c704ae314172b5"
+    sha256 arm64_monterey: "0dbe9856e2d5748dcfb96905dd6ac7c9c6a36b0cc595da44a29e1b30347bd6b1"
+    sha256 arm64_big_sur:  "14537f9a4888cd144c9b64073dd5b023b9bd42c1d37c98463661953f9ec2275d"
+    sha256 monterey:       "8efce3552e3405740fe2ecfb7e7c9cbac22beece9ea0d5f5d345890e84c2faec"
+    sha256 big_sur:        "5d620f8a9386bdc3dfe95a6a26e89bbdd4442be7270888c84ad1feb6c225abc0"
+    sha256 catalina:       "172ab76f8a84c98a3162c61ef0f8d51ad3755eb2c3140a1233d0f19e2a7dea41"
+    sha256 x86_64_linux:   "09f731257bedacd2a6d189895025594b6103c80b35b0b02370833bae3b5068a4"
   end
 
   depends_on "readline"
@@ -34,7 +34,7 @@ class Oil < Formula
     system "#{bin}/osh", "-c", "shopt -q parse_backticks"
     assert_equal testpath.to_s, shell_output("#{bin}/osh -c 'echo `pwd -P`'").strip
 
-    system "#{bin}/oil", "-c", "shopt -q parse_equals"
+    system "#{bin}/oil", "-c", "shopt -u parse_equals"
     assert_equal "bar", shell_output("#{bin}/oil -c 'var foo = \"bar\"; write $foo'").strip
   end
 end

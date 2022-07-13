@@ -1,18 +1,18 @@
 class Siril < Formula
   desc "Astronomical image processing tool"
   homepage "https://www.siril.org"
-  url "https://free-astro.org/download/siril-1.0.0.tar.bz2"
-  sha256 "22fec7b88b94c40c4180e6637fef8a7cd8ea95ccaf23323e403bf2296ec274bc"
+  url "https://free-astro.org/download/siril-1.0.3.tar.bz2"
+  sha256 "2fefa7b7e1378f4ba277818c92ec7c4fca1fdcaa6df95bb65aed0163750be2c6"
   license "GPL-3.0-or-later"
   head "https://gitlab.com/free-astro/siril.git", branch: "master"
 
   bottle do
-    sha256 arm64_monterey: "0e4730f0cf0562b0e41f0c616306cffeb1689d5579cb27e5bc1c8c22fd6378a5"
-    sha256 arm64_big_sur:  "f0d476195f5e9b774a66e50b0c570f3848c3d1deb79ae0317a639a18736d839a"
-    sha256 monterey:       "128fe97ac7e24b8ff62f5bcc9aaa70dc6f2aa46ab66b2e7074d85f79b8c652bf"
-    sha256 big_sur:        "fe9ff9717c8d47434bfd4d8f13c21f88c20f3fdb9e4f20c6ec6672d85dfe77b8"
-    sha256 catalina:       "3bc0fcf0a02ebd5cf11afd7bdb1171398b7e8334275c48dade16b5281d31d85d"
-    sha256 x86_64_linux:   "05c6643e3dcbee57cbac0ce83c0c234a23d3f6730b4b103256f03ed22083368c"
+    sha256 arm64_monterey: "6e2a517c7c7c697440ef5ca850bed738a117f88e55c4962766c9e7dca72d7d41"
+    sha256 arm64_big_sur:  "a6ebd53726bc9d9d24ea3ca857507801ad45e1d99ff3c773bf8ac38ec459730b"
+    sha256 monterey:       "cf1b0437f4c1abf99267ec82393cece1d3f44e8e5815de1c8d38b634adb3e802"
+    sha256 big_sur:        "1c471f84f0e3635888a951d9addae170d61c1d3b54d15a26ca9f0f2c2450b1d3"
+    sha256 catalina:       "ebc5dc9a3e151c417833782f22c48e4af5302ac927e004c99c8e8ca6e5ef0916"
+    sha256 x86_64_linux:   "e3e086e77f6fd437595f7d8e7ff8196d85a9c367aa31e1d6be1e9a599a0fdd8e"
   end
 
   depends_on "autoconf" => :build
@@ -28,10 +28,10 @@ class Siril < Formula
   depends_on "fftw"
   depends_on "gnuplot"
   depends_on "gsl"
+  depends_on "gtk+3"
   depends_on "jpeg"
   depends_on "json-glib"
   depends_on "libconfig"
-  depends_on "libomp"
   depends_on "libraw"
   depends_on "librsvg"
   depends_on "netpbm"
@@ -42,11 +42,11 @@ class Siril < Formula
 
   on_macos do
     depends_on "gtk-mac-integration"
+    depends_on "libomp"
   end
 
   on_linux do
     depends_on "gcc"
-    depends_on "gtk+3"
   end
 
   fails_with gcc: "5" # ffmpeg is compiled with GCC
@@ -56,7 +56,8 @@ class Siril < Formula
 
     # siril uses pkg-config but it has wrong include paths for several
     # headers. Work around that by letting it find all includes.
-    ENV.append_to_cflags "-I#{HOMEBREW_PREFIX}/include -Xpreprocessor -fopenmp -lomp"
+    ENV.append_to_cflags "-I#{HOMEBREW_PREFIX}/include"
+    ENV.append_to_cflags "-Xpreprocessor -fopenmp -lomp" if OS.mac?
 
     system "./autogen.sh", "--prefix=#{prefix}"
     system "make"

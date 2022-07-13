@@ -1,8 +1,8 @@
 class InfluxdbAT1 < Formula
   desc "Time series, events, and metrics database"
   homepage "https://influxdata.com/time-series-platform/influxdb/"
-  url "https://github.com/influxdata/influxdb/archive/v1.9.6.tar.gz"
-  sha256 "2ec001a9194995d6b2655b057ef5bb53345bf363e61627f563ae99ce8f91e142"
+  url "https://github.com/influxdata/influxdb/archive/v1.9.8.tar.gz"
+  sha256 "c013f167437522475f47772f3506d10bab2a818f38aa4c0005a5b75cf78fd8da"
   license "MIT"
 
   livecheck do
@@ -11,12 +11,12 @@ class InfluxdbAT1 < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "42ff02a71e13fb6f034443e9b2dec826a6e68383842550d29bef9b9145069168"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "96fac877490d95a2a18cfe514181b82080bd034b2ab0556f3f46888b96927fc7"
-    sha256 cellar: :any_skip_relocation, monterey:       "9fa799ca468f9f586087e56e359d838dfe68bd8a8fbc63ae6bb9e05b550c7827"
-    sha256 cellar: :any_skip_relocation, big_sur:        "5a84f9b870077815570927b4b3360ad2e2bbd369ac820b91ddd78e6a5531c270"
-    sha256 cellar: :any_skip_relocation, catalina:       "e4e1b20c01729b5db4cfdd88c8d98d417494d77065920df32e680061ae7a7137"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "a78d03dbb9de72417dfb446df0e6999a3062e88ac193a3bfd052a868a03b52d0"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "9f4281fdaa92e8ea6d6b10e0e061a1ae457f2d5460225cee1714637f220eaf28"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "7ea5470b2667e7c5f2648e315d930d8fa001a6e2462e170e6e50141bcee38d2b"
+    sha256 cellar: :any_skip_relocation, monterey:       "a1d48a422ec9ee8e30dbc4331fe883518a6e4693256d4099a17554445a226fc3"
+    sha256 cellar: :any_skip_relocation, big_sur:        "7db57d7c9886a06f00e32131b47d10ab8f977ac15d4a7cbdc654a9d18f0ef28d"
+    sha256 cellar: :any_skip_relocation, catalina:       "99b79b20ed49fdbb8caa230b1705db89b300cf9d2214f631fc4b5da71911dd99"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "bd4cddd222707f38eb332f4eaa01c8051990d957951991d6ca9fa477c6eca773"
   end
 
   keg_only :versioned_formula
@@ -29,8 +29,8 @@ class InfluxdbAT1 < Formula
   # If you're upgrading to a newer influxdb version, check to see if this needs
   # to be upgraded too.
   resource "pkg-config-wrapper" do
-    url "https://github.com/influxdata/pkg-config/archive/refs/tags/v0.2.9.tar.gz"
-    sha256 "25843e58a3e6994bdafffbc0ef0844978a3d1f999915d6770cb73505fcf87e44"
+    url "https://github.com/influxdata/pkg-config/archive/refs/tags/v0.2.11.tar.gz"
+    sha256 "52b22c151163dfb051fd44e7d103fc4cde6ae8ff852ffc13adeef19d21c36682"
   end
 
   def install

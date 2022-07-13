@@ -2,19 +2,19 @@ class Jsonschema < Formula
   include Language::Python::Virtualenv
 
   desc "Implementation of JSON Schema for Python"
-  homepage "https://github.com/Julian/jsonschema"
-  url "https://files.pythonhosted.org/packages/26/67/36cfd516f7b3560bbf7183d7a0f82bb9514d2a5f4e1d682a8a1d55d8031d/jsonschema-4.4.0.tar.gz"
-  sha256 "636694eb41b3535ed608fe04129f26542b59ed99808b4f688aa32dcf55317a83"
+  homepage "https://github.com/python-jsonschema/jsonschema"
+  url "https://files.pythonhosted.org/packages/19/0f/89db7764dfb59fc1c2b18c2d63f11375b4827aa3e93ae037166a780d2bed/jsonschema-4.7.2.tar.gz"
+  sha256 "73764f461d61eb97a057c929368610a134d1d1fffd858acfe88864ee94f1f1d3"
   license "MIT"
-  head "https://github.com/Julian/jsonschema.git", branch: "main"
+  head "https://github.com/python-jsonschema/jsonschema.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "31cd468959c280602d6f59aa81752af3e53c248dfe3b8970b36e6599606c4253"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "24fae0d61406453637e681204f6b56c056d47592346bff7e3cdf566be34a26c0"
-    sha256 cellar: :any_skip_relocation, monterey:       "7255282fd57b4b17df42ef2f92a6c2396fb352f673688351c68728504a884657"
-    sha256 cellar: :any_skip_relocation, big_sur:        "b74e4f9a7c128946cb64eae604bb785faed85b646626b50f32c8a9350cddb80e"
-    sha256 cellar: :any_skip_relocation, catalina:       "8cc2121be2f639cfb82fd59f220127351a32fefe212de2f45213f40d9d05387d"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "c53ad38d260a7b2591cd992822aa03d2eb9982f1e6bd1d58a52cb6d3ec9ab9fc"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "41fe96ccabab5b90e5023c1077be28fe716d12fad98ad0b127d3cdc53d18eae6"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "db4cd67a470103911a30e741cb0c7ddb7e34ed28ea063b0a35085601e6139722"
+    sha256 cellar: :any_skip_relocation, monterey:       "f4d6f43487121067b252daa89c616554dfcfdeadff1a3ab7f9b2161537d4274f"
+    sha256 cellar: :any_skip_relocation, big_sur:        "0e9ae96d595e70a1a336c44c4a21d7e10dd1e38fdaf7538201a2a9698da0fbba"
+    sha256 cellar: :any_skip_relocation, catalina:       "b42b1bd1824acec8027295b5406160039ad86125b0da266f629db38b9c1f2343"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "4a9da0ceb1967ec25abad0214db671d25498e7a0e665728b82b046828bada670"
   end
 
   depends_on "python@3.10"
@@ -26,8 +26,8 @@ class Jsonschema < Formula
   end
 
   resource "pyrsistent" do
-    url "https://files.pythonhosted.org/packages/f4/d7/0fa558c4fb00f15aabc6d42d365fcca7a15fcc1091cd0f5784a14f390b7f/pyrsistent-0.18.0.tar.gz"
-    sha256 "773c781216f8c2900b42a7b638d5b517bb134ae1acbebe4d1e8f1f41ea60eb4b"
+    url "https://files.pythonhosted.org/packages/42/ac/455fdc7294acc4d4154b904e80d964cc9aae75b087bbf486be04df9f2abd/pyrsistent-0.18.1.tar.gz"
+    sha256 "d4d61f8b993a7255ba714df3aca52700f8125289f84f704cf80916517c46eb96"
   end
 
   def install

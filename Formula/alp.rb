@@ -1,19 +1,18 @@
 class Alp < Formula
   desc "Access Log Profiler"
   homepage "https://github.com/tkuchiki/alp"
-  url "https://github.com/tkuchiki/alp/archive/v1.0.8.tar.gz"
-  sha256 "66befab0cd827fed8eeb06e18b0b0e1d4551cf7311ac8c5e15fcabf272a44c99"
+  url "https://github.com/tkuchiki/alp/archive/v1.0.10.tar.gz"
+  sha256 "d2db749edb6e86de53f241e227f99c24775e325b1263ea4daabe155c20c68d6b"
   license "MIT"
   head "https://github.com/tkuchiki/alp.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "eaabd757583812c7c7c71adc45f682928ad66a18a886f234badbe522a5c06385"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "74d8563f23cfd9716a9f7b1b5ecc667f92acb7817ea881efeb0037c9ccaccef8"
-    sha256 cellar: :any_skip_relocation, monterey:       "a96ee3d19dde5365dd9cbe69bc6006aecf0904a2819a4567aed8e82a3091921b"
-    sha256 cellar: :any_skip_relocation, big_sur:        "909d30918325d04599ffe05aecd4b12dc3b4287367f392abc645329cdc0f57f9"
-    sha256 cellar: :any_skip_relocation, catalina:       "3b5ed01c4396d31b9873f39339a6efc9663ee2968db6dbbab777f05ecc7cda84"
-    sha256 cellar: :any_skip_relocation, mojave:         "03a94a2058cd2e4e889fd9064949d0164ade83cc1c6dba2ae5d0804c9e8232c5"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "b304ced670dd2ff7ca0fc39fa82627aee5144d1375fcb9371d492cbd7641fb47"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "8ff6c2e887ac3a452a4675aed69714a833c364bbbfa805d060a05d53a77111c0"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "6ed4feb5b6c467c9bc24bc0205e7470d5c1cad6e264bd0963af888f9b7b7f726"
+    sha256 cellar: :any_skip_relocation, monterey:       "a4376bd9fae4822561c60258fd8ea211d11c7b355217f8716703e041dc0de042"
+    sha256 cellar: :any_skip_relocation, big_sur:        "a04ef45d062b5be9b06feaece132ddb2ef6e4aa1743b56ac6c884668918f68f2"
+    sha256 cellar: :any_skip_relocation, catalina:       "85bb40e9f5c37f4193889ae519999cf3954b957a5658fcce1f685dbb0d241722"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "3cee5952cc110712a13e259e40f3bbfc3c3e6fb8e2976d4eae22fd78a6b89a6f"
   end
 
   depends_on "go" => :build

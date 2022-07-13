@@ -3,17 +3,17 @@ require "language/node"
 class Httpyac < Formula
   desc "Quickly and easily send REST, SOAP, GraphQL and gRPC requests"
   homepage "https://httpyac.github.io/"
-  url "https://registry.npmjs.org/httpyac/-/httpyac-5.3.0.tgz"
-  sha256 "5f0a012d25832632d94434fe6c4e0d9277ebd7139e075d3af7a3598a09b9f721"
+  url "https://registry.npmjs.org/httpyac/-/httpyac-5.5.3.tgz"
+  sha256 "6952a5b6875c77fe0174621a93614c3612224388e50f45da506c14d8bed33022"
   license "MIT"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "4534c0924e3cba4f4cc519076f146c195d337f87cca5ae06ab7818314890718f"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "4534c0924e3cba4f4cc519076f146c195d337f87cca5ae06ab7818314890718f"
-    sha256 cellar: :any_skip_relocation, monterey:       "280e6f8520791b3fb43532867c28d66da33d0af0e6c26ea7a607eff0e5b3fde8"
-    sha256 cellar: :any_skip_relocation, big_sur:        "280e6f8520791b3fb43532867c28d66da33d0af0e6c26ea7a607eff0e5b3fde8"
-    sha256 cellar: :any_skip_relocation, catalina:       "280e6f8520791b3fb43532867c28d66da33d0af0e6c26ea7a607eff0e5b3fde8"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "e1c6c5436c92fbfae9f06bfa550db3e5a869304a46fa39f412745dbed1b07889"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "96a0cfc3fba863fc106127c13e7a3c169ad242217b84a7c3e25e5998bbfea569"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "96a0cfc3fba863fc106127c13e7a3c169ad242217b84a7c3e25e5998bbfea569"
+    sha256 cellar: :any_skip_relocation, monterey:       "4fbf1b7140bf9d590b7fad815908f7922197db213f00f1f6b0c544800f3223e3"
+    sha256 cellar: :any_skip_relocation, big_sur:        "4fbf1b7140bf9d590b7fad815908f7922197db213f00f1f6b0c544800f3223e3"
+    sha256 cellar: :any_skip_relocation, catalina:       "4fbf1b7140bf9d590b7fad815908f7922197db213f00f1f6b0c544800f3223e3"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "4e248dff1c6b38db44a18832af1fbbd73ab184424a143767bc4ae011b66ef111"
   end
 
   depends_on "node"
@@ -55,7 +55,7 @@ class Httpyac < Formula
     # for httpbin call
     assert_match "HTTP/1.1 200  - OK", output
     # for mqtt calls
-    assert_match "2 requests tested (2 succeeded, 0 failed)", output
+    assert_match "2 requests processed (2 succeeded, 0 failed)", output
 
     assert_match version.to_s, shell_output("#{bin}/httpyac --version")
   end

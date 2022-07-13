@@ -1,17 +1,17 @@
 class GitCliff < Formula
   desc "Highly customizable changelog generator"
   homepage "https://github.com/orhun/git-cliff"
-  url "https://github.com/orhun/git-cliff/archive/refs/tags/v0.6.1.tar.gz"
-  sha256 "045fb10ad0ee340172397f2bb6521c7ee0a83dca2c9f9d177300601f6c60184f"
+  url "https://github.com/orhun/git-cliff/archive/refs/tags/v0.8.1.tar.gz"
+  sha256 "08bbd5ded981591c39117be75796883b09334a00c263eee49502b7bc1266ac16"
   license "GPL-3.0-only"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "bf7e85ca5f110ab62f179598cbf67d80eb51c3d1b4512c42f7ef033ff2a25236"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "8a13032be2763d514e147e66d3ac6d77f56101b8149f5ca2d6488bfee8c798e7"
-    sha256 cellar: :any_skip_relocation, monterey:       "5252c46e0f9cb72da81b52fb8c05c93d5dc33ded4dfc62926a717aec60a87a12"
-    sha256 cellar: :any_skip_relocation, big_sur:        "1395afb22b947bbe0144c09e161faa681563423a237bd073ea162d0d705bcdbd"
-    sha256 cellar: :any_skip_relocation, catalina:       "c5fd122113117d403dc8e80b38d338282b37036482678d9e14011ba2836a3659"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "4286ead0329cbd4289aed73cbd6fd1d466ef9fcfdd18ec9c9a6be6b610e60e65"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "a69965279d02cb7b034f9f782c59d19a9884285f7f8b80ffdf478bc43e68c8c2"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "d9ef6e5cedd40eb18b86d69320594863c2a20b024f8f078bfa74db59e6138edf"
+    sha256 cellar: :any_skip_relocation, monterey:       "cb5f0a05fa50c82aa902fbefbe6adb2f113a8c022818020666ae4b53a77dec9b"
+    sha256 cellar: :any_skip_relocation, big_sur:        "939a74749557429fa807e25d1fe202207f02cbbce0ad4a994df8027d7772f937"
+    sha256 cellar: :any_skip_relocation, catalina:       "748a676d6263eb67ca75099909553f3da38a4648df57b969c274674ed5d94661"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "c3bc2ba7648e2fd6e8cfba06c4a539d6981a4654322308acb152d1da55378f59"
   end
 
   depends_on "rust" => :build

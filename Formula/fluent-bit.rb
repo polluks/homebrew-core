@@ -1,8 +1,8 @@
 class FluentBit < Formula
   desc "Fast and Lightweight Logs and Metrics processor"
   homepage "https://github.com/fluent/fluent-bit"
-  url "https://github.com/fluent/fluent-bit/archive/v1.9.2.tar.gz"
-  sha256 "8289ffb9c00b20eb346ac39f396e572ac8e3e493a2b61db64ed0c0c2e797c9da"
+  url "https://github.com/fluent/fluent-bit/archive/v1.9.5.tar.gz"
+  sha256 "ce2e7e108360ea74c654833bbb10cdd15c1dd312ebc190489a4743167c2ac50e"
   license "Apache-2.0"
   head "https://github.com/fluent/fluent-bit.git", branch: "master"
 
@@ -12,17 +12,20 @@ class FluentBit < Formula
   end
 
   bottle do
-    sha256                               arm64_monterey: "fdbf4302afaec2bc8242a7cdcf1109e6deac51901e709d5068c85cd366441f36"
-    sha256                               arm64_big_sur:  "8a6ad8356c263cddb8c4b83611f018b31fee8a56dafc3492d45fe879b3841229"
-    sha256                               monterey:       "80992d850f32f83e88989fa5ea9d9bdb089172b663fabf25a532cfbd93816e8f"
-    sha256                               big_sur:        "40213fd5a81c95c460f6bc52b40f255faa236ef6527006d0a4eae23621b12428"
-    sha256                               catalina:       "15adaaadde23817406c10a1310d22e45e2f0123e9255b780b2958e3fe3a98991"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "fb7dc43dded380a49bf209389251b61b39f7c450024c59ac5426bc72ec71484a"
+    sha256                               arm64_monterey: "4fda9425fec296cedf5c4bf6d56377e32b0652ab199adbc5cbf108cf7491cb99"
+    sha256                               arm64_big_sur:  "cdf11c5be20a40cc06150aaa96e1f4670903f1deb9fcea6e5e3df3007039f48f"
+    sha256                               monterey:       "abace34e221623bcca622d4e57e6a5cfff53e71449e810b6754bd61ccb7574d3"
+    sha256                               big_sur:        "28c42d15ec68a8d878f32f84fe2e8ede352df49fe36ea4a869318c4d84285443"
+    sha256                               catalina:       "88a83cc66b0899be94c43ed5c2674c3e08e628be053863fc10c46861e1d4bf9e"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "90632685a08fd2100692a141810984660b86f6a12e131e2241ea472717167fbd"
   end
 
   depends_on "bison" => :build
   depends_on "cmake" => :build
   depends_on "flex" => :build
+  depends_on "pkg-config" => :build
+
+  depends_on "libyaml"
 
   on_linux do
     depends_on "openssl@1.1"

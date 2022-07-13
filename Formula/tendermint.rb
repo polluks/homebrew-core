@@ -1,18 +1,18 @@
 class Tendermint < Formula
   desc "BFT state machine replication for applications in any programming languages"
   homepage "https://tendermint.com/"
-  url "https://github.com/tendermint/tendermint/archive/v0.35.3.tar.gz"
-  sha256 "7a41029a32b3e425d0f8343580c873cf23e3f626ba0a2898d1e3b92c38c09974"
+  url "https://github.com/tendermint/tendermint/archive/v0.35.7.tar.gz"
+  sha256 "d56fa85c67239c156f849d8295a5f8c660eabecf3407674f0fc49fe68b1d3748"
   license "Apache-2.0"
   head "https://github.com/tendermint/tendermint.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "e963f8f1c2703eeb438eae89cb4137b71d6e7b807cdc5034c949b2e3e3a80163"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "e963f8f1c2703eeb438eae89cb4137b71d6e7b807cdc5034c949b2e3e3a80163"
-    sha256 cellar: :any_skip_relocation, monterey:       "a9724d7522cdbf6f5037cf63909f3ad8d2b9993f5dfaf53d8240a6419782b906"
-    sha256 cellar: :any_skip_relocation, big_sur:        "a9724d7522cdbf6f5037cf63909f3ad8d2b9993f5dfaf53d8240a6419782b906"
-    sha256 cellar: :any_skip_relocation, catalina:       "a9724d7522cdbf6f5037cf63909f3ad8d2b9993f5dfaf53d8240a6419782b906"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "a94a17cf104ce7de3e805eda366bf3f05535a906060b21e53380d7326222a9bc"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "b4a2b7f5fe4bf975f6b4a5b9247304c892dace84cb37c02d43447bb5c0d1212d"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "b4a2b7f5fe4bf975f6b4a5b9247304c892dace84cb37c02d43447bb5c0d1212d"
+    sha256 cellar: :any_skip_relocation, monterey:       "c4d4784a84eb1b5499e3140660fa1933ae8536da4e596134b986e1676ddf8c45"
+    sha256 cellar: :any_skip_relocation, big_sur:        "c4d4784a84eb1b5499e3140660fa1933ae8536da4e596134b986e1676ddf8c45"
+    sha256 cellar: :any_skip_relocation, catalina:       "c4d4784a84eb1b5499e3140660fa1933ae8536da4e596134b986e1676ddf8c45"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "34156bf52a395bebf22fe3273f0341f023725731f35574ba7234f0fdcc916d8c"
   end
 
   depends_on "go" => :build

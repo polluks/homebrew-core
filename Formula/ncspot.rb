@@ -1,17 +1,17 @@
 class Ncspot < Formula
   desc "Cross-platform ncurses Spotify client written in Rust"
   homepage "https://github.com/hrkfdn/ncspot"
-  url "https://github.com/hrkfdn/ncspot/archive/v0.9.7.tar.gz"
-  sha256 "6a7dec42d7ffde7d455b75dbc846f34463ae1e3c9bd84669382e90c4d1b31e3e"
+  url "https://github.com/hrkfdn/ncspot/archive/v0.10.0.tar.gz"
+  sha256 "18617de29ba4d96b3c4b17139fc3b0fcdfa0adb205cbec96afb817b7981a33d2"
   license "BSD-2-Clause"
 
   bottle do
-    sha256 cellar: :any,                 arm64_monterey: "bb28fc1d752bc47726580bbdcbd7bcbdf4ec4bcc58794e5cc63e90de539979cd"
-    sha256 cellar: :any,                 arm64_big_sur:  "69475b4ad3a10ad84bba6e275bbc1ce763e39c191f28f41c8d664484687e0ff3"
-    sha256 cellar: :any,                 monterey:       "6c6723b49e16fdec85aa480a989af15e50738f88dc11d8790b865497b27082b3"
-    sha256 cellar: :any,                 big_sur:        "c25c9486e75d94d3f490583a991fd22b06783fc741a0a38e65f17e7f6fc31a76"
-    sha256 cellar: :any,                 catalina:       "30fddfa84c0d0488f635238f36075a5fd4e16c9aa3a9b2aea91f4d7359e46228"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "657b5b38daa6a97e3ff595e84eb593dba769816773c70f4afa1a33eec2c793f9"
+    sha256 cellar: :any,                 arm64_monterey: "ba5d74c03e1b8629cefb37e3f9a3084f9ea261d782227183861a68e9313ed68d"
+    sha256 cellar: :any,                 arm64_big_sur:  "301b46feac963a022209b751a50f9554a8455a4200289e44af3bd9d138857be7"
+    sha256 cellar: :any,                 monterey:       "00d1757333e950e11f6e26de41322cbc603d227db8e351ba8e383a967e4a56f1"
+    sha256 cellar: :any,                 big_sur:        "620941a6b33f2522fa1043b32e953e832adf439ebb283cea28335429d681df84"
+    sha256 cellar: :any,                 catalina:       "f7ee58e798a7b2e0b8319f3ce87767acb092401186c14b22f321897c7d4a90bb"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "ad4761a4b43e68e4f7db6290b0af972d87cd66c09be802b90279d9d2a86916bd"
   end
 
   depends_on "python@3.10" => :build

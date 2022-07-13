@@ -3,8 +3,8 @@ class Prestodb < Formula
 
   desc "Distributed SQL query engine for big data"
   homepage "https://prestodb.io"
-  url "https://search.maven.org/remotecontent?filepath=com/facebook/presto/presto-server/0.272/presto-server-0.272.tar.gz"
-  sha256 "4e696f874a3bfa0c712f283e4012fad332a9d71ea982ce24f8a91acc6a5d8372"
+  url "https://search.maven.org/remotecontent?filepath=com/facebook/presto/presto-server/0.273.4/presto-server-0.273.4.tar.gz"
+  sha256 "39cda63782aa3d160ab8215070a060ee1f05beeba9fc7a29da88d3aa572f01a9"
   license "Apache-2.0"
 
   # Upstream has said that we should check Maven for Presto version information
@@ -16,15 +16,17 @@ class Prestodb < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, all: "4f52ed17e534be51ca8a6e6f551850bb948c301e78a467589394edc5152ffdc3"
+    sha256 cellar: :any_skip_relocation, all: "2d45da9a5196fc265e30420983e4960c7ed2cdcb6680b8da81937b891aa8bc2a"
   end
 
-  depends_on "openjdk"
+  # https://github.com/prestodb/presto/issues/17146
+  depends_on arch: :x86_64
+  depends_on "openjdk@11"
   depends_on "python@3.10"
 
   resource "presto-cli" do
-    url "https://search.maven.org/remotecontent?filepath=com/facebook/presto/presto-cli/0.272/presto-cli-0.272-executable.jar"
-    sha256 "bdc7bfe2ad84f8ad217a3fc5744b7552cea00df059763d7155ce14cf159b95cf"
+    url "https://search.maven.org/remotecontent?filepath=com/facebook/presto/presto-cli/0.273.4/presto-cli-0.273.4-executable.jar"
+    sha256 "40c6babf038b63210ede4f2cf09976244c75fe95cedab0b7ec00332f7eb7d9f2"
   end
 
   def install
@@ -63,11 +65,13 @@ class Prestodb < Formula
     (libexec/"etc/catalog/jmx.properties").write "connector.name=jmx"
 
     rewrite_shebang detected_python_shebang, libexec/"bin/launcher.py"
-    (bin/"presto-server").write_env_script libexec/"bin/launcher", Language::Java.overridable_java_home_env
+    env = Language::Java.overridable_java_home_env("11")
+    env["PATH"] = "$JAVA_HOME/bin:$PATH"
+    (bin/"presto-server").write_env_script libexec/"bin/launcher", env
 
     resource("presto-cli").stage do
       libexec.install "presto-cli-#{version}-executable.jar"
-      bin.write_jar_script libexec/"presto-cli-#{version}-executable.jar", "presto"
+      bin.write_jar_script libexec/"presto-cli-#{version}-executable.jar", "presto", java_version: "11"
     end
 
     # Remove incompatible pre-built binaries
@@ -95,7 +99,21 @@ class Prestodb < Formula
   end
 
   test do
-    system bin/"presto-server", "run", "--help"
-    assert_match "Presto CLI #{version}", shell_output("#{bin}/presto --version").chomp
+    port = free_port
+    cp libexec/"etc/config.properties", testpath/"config.properties"
+    inreplace testpath/"config.properties", "8080", port.to_s
+    server = fork do
+      exec bin/"presto-server", "run", "--verbose",
+                                       "--data-dir", testpath,
+                                       "--config", testpath/"config.properties"
+    end
+    sleep 30
+
+    query = "SELECT state FROM system.runtime.nodes"
+    output = shell_output(bin/"presto --debug --server localhost:#{port} --execute '#{query}'")
+    assert_match "\"active\"", output
+  ensure
+    Process.kill("TERM", server)
+    Process.wait server
   end
 end

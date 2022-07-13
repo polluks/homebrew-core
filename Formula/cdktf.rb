@@ -3,17 +3,18 @@ require "language/node"
 class Cdktf < Formula
   desc "Cloud Development Kit for Terraform"
   homepage "https://github.com/hashicorp/terraform-cdk"
-  url "https://registry.npmjs.org/cdktf-cli/-/cdktf-cli-0.10.1.tgz"
-  sha256 "fcce7ef97a47b7bd6660e526d561b604b191b2ce935ef926bdbca57396e9f5f1"
+  url "https://registry.npmjs.org/cdktf-cli/-/cdktf-cli-0.11.2.tgz"
+  sha256 "84aac7ae4d338ccc85c32822b27a76359d485fa9d1a1e0c3aadbc95a8aaa86f4"
   license "MPL-2.0"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "b9815d0e38e4a9d2f968a977ae354afb26f9e76d3113a29e33fef21cecf36811"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "b9815d0e38e4a9d2f968a977ae354afb26f9e76d3113a29e33fef21cecf36811"
-    sha256 cellar: :any_skip_relocation, monterey:       "ddbc8f61ab8683ab81b27b819b99d64d687f72b6d932d243e75249fc76635544"
-    sha256 cellar: :any_skip_relocation, big_sur:        "ddbc8f61ab8683ab81b27b819b99d64d687f72b6d932d243e75249fc76635544"
-    sha256 cellar: :any_skip_relocation, catalina:       "ddbc8f61ab8683ab81b27b819b99d64d687f72b6d932d243e75249fc76635544"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "b9815d0e38e4a9d2f968a977ae354afb26f9e76d3113a29e33fef21cecf36811"
+    rebuild 1
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "88c8c7d10d2c9cc9f41ee32d71ca19b668784e6959e499bb9bf74bc09261c972"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "88c8c7d10d2c9cc9f41ee32d71ca19b668784e6959e499bb9bf74bc09261c972"
+    sha256 cellar: :any_skip_relocation, monterey:       "7203c49050b33568086e239328b752fad06f9a247a1dd52c372bd3eb9c2c7af8"
+    sha256 cellar: :any_skip_relocation, big_sur:        "7203c49050b33568086e239328b752fad06f9a247a1dd52c372bd3eb9c2c7af8"
+    sha256 cellar: :any_skip_relocation, catalina:       "7203c49050b33568086e239328b752fad06f9a247a1dd52c372bd3eb9c2c7af8"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "88c8c7d10d2c9cc9f41ee32d71ca19b668784e6959e499bb9bf74bc09261c972"
   end
 
   depends_on "node"
@@ -22,6 +23,13 @@ class Cdktf < Formula
   def install
     system "npm", "install", *Language::Node.std_npm_install_args(libexec)
     bin.install_symlink Dir["#{libexec}/bin/*"]
+
+    # completion script currently requires --help run without error https://github.com/hashicorp/terraform-cdk/issues/1905
+    output = Utils.safe_popen_read({ "SHELL" => "bash" }, libexec/"bin/cdktf", "completion", "--help")
+    (bash_completion/"cdktf").write output
+
+    output = Utils.safe_popen_read({ "SHELL" => "zsh" }, libexec/"bin/cdktf", "completion", "--help")
+    (zsh_completion/"_cdktf").write output
   end
 
   test do
